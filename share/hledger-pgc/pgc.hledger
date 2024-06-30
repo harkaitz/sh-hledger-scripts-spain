@@ -1,0 +1,781 @@
+account P:NoCorriente                                                    ; type: L, desc: pasivo no corriente
+account P:Corriente                                                      ; type: L, desc: pasivo corriente
+account PN                                                               ; type: E, desc: financiacion basica
+account PN:Capital:10                                                    ; type: E, desc: capital
+account PN:Capital:100-Social                                            ; type: E, desc: capital social
+account PN:Capital:101-FondoSocial                                       ; type: E, desc: fondo social
+account PN:Capital:102                                                   ; type: E, desc: capital
+account PN:Capital:103-SociosDesemNoExigidos                             ; type: E, desc: socios por desembolsos no exigidos
+account PN:Capital:1030                                                  ; type: E, desc: socios por desembolsos no exigidos, capital social
+account PN:Capital:1034                                                  ; type: E, desc: socios por desembolsos no exigidos, capital pendiente de inscripcion
+account PN:Capital:104                                                   ; type: E, desc: socios por aportaciones no dinerarias pendientes
+account PN:Capital:1040                                                  ; type: E, desc: socios por aportaciones no dinerarias pendientes, capital social
+account PN:Capital:1044                                                  ; type: E, desc: socios por aportaciones no dinerarias pendientes, capital pendiente de inscripcion
+account PN:Capital:108                                                   ; type: E, desc: acciones o participaciones propias en situaciones especiales
+account PN:Capital:109                                                   ; type: E, desc: acciones o participaciones propias para reduccion de capital
+account PN:Resv:11                                                       ; type: E, desc: reservas
+account PN:Resv:110-PrimaEmision                                         ; type: E, desc: prima de emision o asuncion
+account PN:Resv:112-Legal                                                ; type: E, desc: reserva legal
+account PN:Resv:113-Voluntarias                                          ; type: E, desc: reservas voluntarias
+account PN:Resv:114-Especiales                                           ; type: E, desc: reservas especiales
+account PN:Resv:1140                                                     ; type: E, desc: reservas para acciones o participaciones de la sociedad domi nante
+account PN:Resv:1141-Estatutarias                                        ; type: E, desc: reservas estatutarias
+account PN:Resv:1142-CapitalAmortizado                                   ; type: E, desc: reserva por capital amortizado
+account PN:Resv:1144                                                     ; type: E, desc: reservas por acciones propias aceptadas en garantia
+account PN:Resv:118-AportSocios                                          ; type: E, desc: aportaciones de socios o propietarios
+account PN:Resv:119                                                      ; type: E, desc: diferencias por ajuste del capital a euros
+account PN:ResulPend:12                                                  ; type: E, desc: resultados pendientes de aplicacion
+account PN:ResulPend:120-Remanente                                       ; type: E, desc: remanente
+account PN:ResulPend:121-ResulNegativosEA                                ; type: E, desc: resultados negativos de ejercicios anteriores
+account PN:ResulPend:129-ResulDelEjercicio                               ; type: E, desc: resultado del ejercicio
+account PN:AjustesSubvenciones:13                                        ; type: E, desc: subvenciones, donaciones, legados y otros ajustes en patrimonio neto
+account PN:AjustesSubvenciones:130-SubvencionesOficialesCapital          ; type: E, desc: subvenciones oficiales de capital
+account PN:AjustesSubvenciones:131-DonacionesYLegadosCapital             ; type: E, desc: donaciones y legados de capital
+account PN:AjustesSubvenciones:132-OtrasSubvenciones                     ; type: E, desc: otras subvenciones, donaciones y legados
+account PN:AjustesSubvenciones:137                                       ; type: E, desc: ingresos fiscales a distribuir en varios ejercicios
+account PN:AjustesSubvenciones:1370                                      ; type: E, desc: ingresos fiscales por diferencias permanentes a distribuir en varios ejercicios
+account PN:AjustesSubvenciones:1371                                      ; type: E, desc: ingresos fiscales por deducciones y bonificaciones a distribuir en varios ejercicios
+account P:NoCorriente:Provis:14                                          ; type: L, desc: provisiones
+account P:NoCorriente:Provis:141-ParaImpuestos                           ; type: L, desc: provision para impuestos
+account P:NoCorriente:Provis:142-ParaOtrasResp                           ; type: L, desc: provision para otras responsabilidades
+account P:NoCorriente:Provis:143                                         ; type: L, desc: provision por desmantelamiento, retiro o rehabilitacion del inmovilizado
+account P:NoCorriente:Provis:145-ParaActuacionesMedioambientales         ; type: L, desc: provision para actuaciones medioambientales
+account P:Corriente:DeudasLargoEspeciales:15                             ; type: L, desc: deudas a largo plazo con caracteristicas especiales
+account P:Corriente:DeudasLargoEspeciales:150                            ; type: L, desc: acciones o participaciones a largo plazo consideradas como pasivos financieros
+account P:Corriente:DeudasLargoEspeciales:153                            ; type: L, desc: desembolsos no exigidos por acciones o participaciones consideradas como pasivos financieros
+account P:Corriente:DeudasLargoEspeciales:1533                           ; type: L, desc: desembolsos no exigidos, empresas del grupo
+account P:Corriente:DeudasLargoEspeciales:1534-DesemNoExigidos           ; type: L, desc: desembolsos no exigidos, empresas asociadas
+account P:Corriente:DeudasLargoEspeciales:1535                           ; type: L, desc: desembolsos no exigidos, otras partes vinculadas
+account P:Corriente:DeudasLargoEspeciales:1536-OtrosDesemNoExigidos      ; type: L, desc: otros desembolsos no exigidos
+account P:Corriente:DeudasLargoEspeciales:154                            ; type: L, desc: aportaciones no dinerarias pendientes por acciones o participaciones consideradas como pasivos financieros
+account P:Corriente:DeudasLargoEspeciales:1543                           ; type: L, desc: aportaciones no dinerarias pendientes, empresas del grupo
+account P:Corriente:DeudasLargoEspeciales:1544                           ; type: L, desc: aportaciones no dinerarias pendientes, empresas asociadas
+account P:Corriente:DeudasLargoEspeciales:1545                           ; type: L, desc: aportaciones no dinerarias pendientes, otras partes vinculadas
+account P:Corriente:DeudasLargoEspeciales:1546-OtrasAportNoDinerariasPend     ; type: L, desc: otras aportaciones no dinerarias pendientes
+account P:NoCorriente:DeudasLargoPartesVinc:16                           ; type: L, desc: deudas a largo plazo con partes vincu ladas
+account P:NoCorriente:DeudasLargoPartesVinc:160                          ; type: L, desc: deudas a largo plazo con entidades de credito vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:1603                         ; type: L, desc: deudas a largo plazo con entidades de credito, empresas del grupo
+account P:NoCorriente:DeudasLargoPartesVinc:1604                         ; type: L, desc: deudas a largo plazo con entidades de credito, empresas asociadas
+account P:NoCorriente:DeudasLargoPartesVinc:1605                         ; type: L, desc: deudas a largo plazo con otras entidades de credito vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:161                          ; type: L, desc: proveedores de inmovilizado a largo plazo, partes vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:1613                         ; type: L, desc: proveedores de inmovilizado a largo plazo, empresas del grupo
+account P:NoCorriente:DeudasLargoPartesVinc:1614                         ; type: L, desc: proveedores de inmovilizado a largo plazo, empresas asociadas
+account P:NoCorriente:DeudasLargoPartesVinc:1615                         ; type: L, desc: proveedores de inmovilizado a largo plazo, otras partes vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:162                          ; type: L, desc: acreedores por arrendamiento financiero a largo plazo, partes vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:1623                         ; type: L, desc: acreedores por arrendamiento financiero a largo plazo, empresas de grupo
+account P:NoCorriente:DeudasLargoPartesVinc:1624                         ; type: L, desc: acreedores por arrendamiento financiero a largo plazo, empresas asociadas
+account P:NoCorriente:DeudasLargoPartesVinc:1625                         ; type: L, desc: acreedores por arrendamiento financiero a largo plazo, otras partes vinculadas
+account P:NoCorriente:DeudasLargoPartesVinc:163                          ; type: L, desc: otras deudas a largo plazo con partes vincu ladas
+account P:NoCorriente:DeudasLargoPartesVinc:1633                         ; type: L, desc: otras deudas a largo plazo, empresas del grupo
+account P:NoCorriente:DeudasLargoPartesVinc:1634                         ; type: L, desc: otras deudas a largo plazo, empresas asociadas
+account P:NoCorriente:DeudasLargoPartesVinc:1635                         ; type: L, desc: otras deudas a largo plazo, con otras partes vinculadas
+account P:NoCorriente:DeudasLargoPlazo:17                                ; type: L, desc: deudas a largo plazo por prestamos recibidos, emprestitos y otros conceptos
+account P:NoCorriente:DeudasLargoPlazo:170                               ; type: L, desc: deudas a largo plazo con entidades de credito
+account P:NoCorriente:DeudasLargoPlazo:171                               ; type: L, desc: deudas a largo plazo
+account P:NoCorriente:DeudasLargoPlazo:172                               ; type: L, desc: deudas a largo plazo transformables en subvenciones, donaciones y legados
+account P:NoCorriente:DeudasLargoPlazo:173                               ; type: L, desc: proveedores de inmovilizado a largo plazo
+account P:NoCorriente:DeudasLargoPlazo:174                               ; type: L, desc: acreedores por arrendamiento financiero a largo plazo
+account P:NoCorriente:DeudasLargoPlazo:175                               ; type: L, desc: efectos a pagar a largo plazo
+account P:NoCorriente:DeudasLargoPlazo:176                               ; type: L, desc: pasivos por derivados financieros a largo plazo
+account P:NoCorriente:DeudasLargoPlazo:177-ObligacionesYBonos            ; type: L, desc: obligaciones y bonos
+account P:NoCorriente:DeudasLargoPlazo:179                               ; type: L, desc: deudas representadas en otros valores negociables
+account P:NoCorriente:Fianzas:18                                         ; type: L, desc: pasivos por fianzas, garantias y otros conceptos a largo plazo
+account P:NoCorriente:Fianzas:180-RecibidasLargoPlazo                    ; type: L, desc: fianzas recibidas a largo plazo
+account P:NoCorriente:Fianzas:181                                        ; type: L, desc: anticipos recibidos por ventas o prestaciones de servicios a largo plazo
+account P:NoCorriente:Fianzas:185-DepositosRecibidosLargoPlazo           ; type: L, desc: depositos recibidos a largo plazo
+account P:Corriente:STFinanciacion:19                                    ; type: L, desc: situaciones transitorias de financiacion
+account P:Corriente:STFinanciacion:190-Acciones                          ; type: L, desc: acciones o participaciones emitidas
+account P:Corriente:STFinanciacion:192-SuscriptoresAcciones              ; type: L, desc: suscriptores de acciones
+account P:Corriente:STFinanciacion:194-CapitalEmitidoPendInscripcion     ; type: L, desc: capital emitido pendiente de inscripcion
+account P:Corriente:STFinanciacion:195                                   ; type: L, desc: acciones o participaciones emitidas consideradas como pasivos financieros
+account P:Corriente:STFinanciacion:197                                   ; type: L, desc: suscriptores de acciones consideradas como pasivos financieros
+account P:Corriente:STFinanciacion:199                                   ; type: L, desc: acciones o participaciones emitidas consideradas como pasivos financieros pendientes de inscripcion
+account A:NoCorriente                                                    ; type: A, desc: activo no corriente
+account A:NoCorriente:InmIntang:20                                       ; type: A, desc: inmovilizaciones intangibles
+account A:NoCorriente:InmIntang:200-Investigacion                        ; type: A, desc: investigacion
+account A:NoCorriente:InmIntang:201-Desarrollo                           ; type: A, desc: desarrollo
+account A:NoCorriente:InmIntang:202-ConcesionesAdministrativas           ; type: A, desc: concesiones administrativas
+account A:NoCorriente:InmIntang:203-PropiedadIndustrial                  ; type: A, desc: propiedad industrial
+account A:NoCorriente:InmIntang:205-DerechosTraspaso                     ; type: A, desc: derechos de traspaso
+account A:NoCorriente:InmIntang:206-AplicacionesInformaticas             ; type: A, desc: aplicaciones informaticas
+account A:NoCorriente:InmIntang:209-AnticiposParaInmIntang               ; type: A, desc: anticipos para inmovilizaciones intangibles
+account A:NoCorriente:InmMaterial:21                                     ; type: A, desc: inmovilizaciones materiales
+account A:NoCorriente:InmMaterial:210-TerrenosYBienesNaturales           ; type: A, desc: terrenos y bienes naturales
+account A:NoCorriente:InmMaterial:211-Construcciones                     ; type: A, desc: construcciones
+account A:NoCorriente:InmMaterial:212-InstalacionesTecnicas              ; type: A, desc: instalaciones tecnicas
+account A:NoCorriente:InmMaterial:213-Maquinaria                         ; type: A, desc: maquinaria
+account A:NoCorriente:InmMaterial:214-Utillaje                           ; type: A, desc: utillaje
+account A:NoCorriente:InmMaterial:215-OtrasInstalaciones                 ; type: A, desc: otras instalaciones
+account A:NoCorriente:InmMaterial:216-Mobiliario                         ; type: A, desc: mobiliario
+account A:NoCorriente:InmMaterial:217-Informatica                        ; type: A, desc: equipos para procesos de informacion
+account A:NoCorriente:InmMaterial:218-ElementosTransporte                ; type: A, desc: elementos de transporte
+account A:NoCorriente:InmMaterial:219-OtroInmMaterial                    ; type: A, desc: otro inmovilizado material
+account A:NoCorriente:InversionesInmob:22                                ; type: A, desc: inversiones inmobiliarias
+account A:NoCorriente:InversionesInmob:220                               ; type: A, desc: inversiones en terrenos y bienes naturales
+account A:NoCorriente:InversionesInmob:221-InversionesEnConstrucciones     ; type: A, desc: inversiones en construcciones
+account A:NoCorriente:InmMaterialEnCurso:23                              ; type: A, desc: inmovilizaciones materiales en curso
+account A:NoCorriente:InmMaterialEnCurso:230                             ; type: A, desc: adaptacion de terrenos y bienes naturales
+account A:NoCorriente:InmMaterialEnCurso:231-ConstruccionesEnCurso       ; type: A, desc: construcciones en curso
+account A:NoCorriente:InmMaterialEnCurso:232-InstalacionesTecnicasEnMontaje     ; type: A, desc: instalaciones tecnicas en montaje
+account A:NoCorriente:InmMaterialEnCurso:233-MaquinariaEnMontaje         ; type: A, desc: maquinaria en montaje
+account A:NoCorriente:InmMaterialEnCurso:237                             ; type: A, desc: equipos para procesos de informacion en montaje
+account A:NoCorriente:InmMaterialEnCurso:239-AnticiposParaInmMaterial     ; type: A, desc: anticipos para inmovilizaciones materiales
+account A:NoCorriente:InversLargoPartesVinc:24                           ; type: A, desc: inversiones financieras a largo plazo en partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:240                          ; type: A, desc: participaciones a largo plazo en partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:2403                         ; type: A, desc: participaciones a largo plazo en empresas del grupo
+account A:NoCorriente:InversLargoPartesVinc:2404                         ; type: A, desc: participaciones a largo plazo en empresas asociadas
+account A:NoCorriente:InversLargoPartesVinc:2405                         ; type: A, desc: participaciones a largo plazo en otras partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:241                          ; type: A, desc: valores representativos de deuda a largo plazo de partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:2413                         ; type: A, desc: valores representativos de deuda a largo plazo de empresas del grupo
+account A:NoCorriente:InversLargoPartesVinc:2414                         ; type: A, desc: valores representativos de deuda a largo plazo de empresas asociadas
+account A:NoCorriente:InversLargoPartesVinc:2415                         ; type: A, desc: valores representativos de deuda a largo plazo de otras partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:242                          ; type: A, desc: creditos a largo plazo a partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:2423                         ; type: A, desc: creditos a largo plazo a empresas del grupo
+account A:NoCorriente:InversLargoPartesVinc:2424                         ; type: A, desc: creditos a largo plazo a empresas asociadas
+account A:NoCorriente:InversLargoPartesVinc:2425                         ; type: A, desc: creditos a largo plazo a otras partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:249                          ; type: A, desc: desembolsos pendientes sobre participaciones a largo plazo en partes vinculadas
+account A:NoCorriente:InversLargoPartesVinc:2493                         ; type: A, desc: desembolsos pendientes sobre participaciones a largo plazo en em presas del grupo
+account A:NoCorriente:InversLargoPartesVinc:2494                         ; type: A, desc: desembolsos pendientes sobre participaciones a largo plazo en empresas asociadas
+account A:NoCorriente:InversLargoPartesVinc:2495                         ; type: A, desc: desembolsos pendientes sobre participaciones a largo plazo en otras partes vinculadas
+account A:NoCorriente:InversLargoPlazo:25                                ; type: A, desc: otras inversiones financieras a largo plazo
+account A:NoCorriente:InversLargoPlazo:250                               ; type: A, desc: inversiones financieras a largo plazo en instrumentos de patrimonio
+account A:NoCorriente:InversLargoPlazo:251                               ; type: A, desc: valores representativos de deuda a largo plazo
+account A:NoCorriente:InversLargoPlazo:252-CreditosLargoPlazo            ; type: A, desc: creditos a largo plazo
+account A:NoCorriente:InversLargoPlazo:253                               ; type: A, desc: creditos a largo plazo por enajenacion de inmovilizado
+account A:NoCorriente:InversLargoPlazo:254                               ; type: A, desc: creditos a largo plazo al personal
+account A:NoCorriente:InversLargoPlazo:255                               ; type: A, desc: activos por derivados financieros a largo plazo
+account A:NoCorriente:InversLargoPlazo:258-ImposicionesLargoPlazo        ; type: A, desc: imposiciones a largo plazo
+account A:NoCorriente:InversLargoPlazo:259                               ; type: A, desc: desembolsos pendientes sobre participaciones en el patrimonio neto a largo plazo
+account A:NoCorriente:Fianzas:26                                         ; type: A, desc: fianzas y depositos constituidos a largo plazo
+account A:NoCorriente:Fianzas:260-ConstituidasLargoPlazo                 ; type: A, desc: fianzas constituidas a largo plazo
+account A:NoCorriente:Fianzas:265-DepositosConstituidosLargoPlazo        ; type: A, desc: depositos constituidos a largo plazo
+account A:NoCorriente:AmortizAcum:28                                     ; type: A, desc: amortizacion acumulada del inmovilizado
+account A:NoCorriente:AmortizAcum:280-DelInmIntang                       ; type: A, desc: amortizacion acumulada del inmovilizado intangible
+account A:NoCorriente:AmortizAcum:2800-Investigacion                     ; type: A, desc: amortizacion acumulada de investigacion
+account A:NoCorriente:AmortizAcum:2801-Desarrollo                        ; type: A, desc: amortizacion acumulada de desarrollo
+account A:NoCorriente:AmortizAcum:2802-ConcesionesAdministrativas        ; type: A, desc: amortizacion acumulada de concesiones administrativas
+account A:NoCorriente:AmortizAcum:2803-PropiedadIndustrial               ; type: A, desc: amortizacion acumulada de propiedad industrial
+account A:NoCorriente:AmortizAcum:2805                                   ; type: A, desc: amortizacion acumulada de derechos de traspaso
+account A:NoCorriente:AmortizAcum:2806-AplicacionesInformaticas          ; type: A, desc: amortizacion acumulada de aplicaciones informaticas
+account A:NoCorriente:AmortizAcum:281-DelInmMaterial                     ; type: A, desc: amortizacion acumulada del inmovilizado material
+account A:NoCorriente:AmortizAcum:2811-Construcciones                    ; type: A, desc: amortizacion acumulada de construcciones
+account A:NoCorriente:AmortizAcum:2812-InstalacionesTecnicas             ; type: A, desc: amortizacion acumulada de instalaciones tecnicas
+account A:NoCorriente:AmortizAcum:2813-Maquinaria                        ; type: A, desc: amortizacion acumulada de maquinaria
+account A:NoCorriente:AmortizAcum:2814-Utillaje                          ; type: A, desc: amortizacion acumulada de utillaje
+account A:NoCorriente:AmortizAcum:2815-OtrasInstalaciones                ; type: A, desc: amortizacion acumulada de otras instalaciones
+account A:NoCorriente:AmortizAcum:2816-Mobiliario                        ; type: A, desc: amortizacion acumulada de mobiliario
+account A:NoCorriente:AmortizAcum:2817                                   ; type: A, desc: amortizacion acumulada de equipos para procesos de informacion
+account A:NoCorriente:AmortizAcum:2818                                   ; type: A, desc: amortizacion acumulada de elementos de transporte
+account A:NoCorriente:AmortizAcum:2819                                   ; type: A, desc: amortizacion acumulada de otro inmovilizado material
+account A:NoCorriente:AmortizAcum:282                                    ; type: A, desc: amortizacion acumulada de las inversiones inmobiliarias
+account A:NoCorriente:Deterioro:29                                       ; type: A, desc: deterioro de valor de activos no corrientes
+account A:NoCorriente:Deterioro:290                                      ; type: A, desc: deterioro de valor del inmovilizado intangible
+account A:NoCorriente:Deterioro:2900-ValorInvestigacion                  ; type: A, desc: deterioro de valor de investigacion
+account A:NoCorriente:Deterioro:2901-ValorDesarrollo                     ; type: A, desc: deterioro de valor de desarrollo
+account A:NoCorriente:Deterioro:2902                                     ; type: A, desc: deterioro de valor de concesiones administrativas
+account A:NoCorriente:Deterioro:2903                                     ; type: A, desc: deterioro de valor de propiedad industrial
+account A:NoCorriente:Deterioro:2905                                     ; type: A, desc: deterioro de valor de derechos de traspaso
+account A:NoCorriente:Deterioro:2906                                     ; type: A, desc: deterioro de valor de aplicaciones informaticas
+account A:NoCorriente:Deterioro:291                                      ; type: A, desc: deterioro de valor del inmovilizado material
+account A:NoCorriente:Deterioro:2910                                     ; type: A, desc: deterioro de valor de terrenos y bienes naturales
+account A:NoCorriente:Deterioro:2911-ValorConstrucciones                 ; type: A, desc: deterioro de valor de construcciones
+account A:NoCorriente:Deterioro:2912                                     ; type: A, desc: deterioro de valor de instalaciones tecnicas
+account A:NoCorriente:Deterioro:2913-ValorMaquinaria                     ; type: A, desc: deterioro de valor de maquinaria
+account A:NoCorriente:Deterioro:2914-ValorUtillaje                       ; type: A, desc: deterioro de valor de utillaje
+account A:NoCorriente:Deterioro:2915                                     ; type: A, desc: deterioro de valor de otras instalaciones
+account A:NoCorriente:Deterioro:2916-ValorMobiliario                     ; type: A, desc: deterioro de valor de mobiliario
+account A:NoCorriente:Deterioro:2917                                     ; type: A, desc: deterioro de valor de equipos para procesos de informacion
+account A:NoCorriente:Deterioro:2918                                     ; type: A, desc: deterioro de valor de elementos de transporte
+account A:NoCorriente:Deterioro:2919                                     ; type: A, desc: deterioro de valor de otro inmovilizado material
+account A:NoCorriente:Deterioro:292                                      ; type: A, desc: deterioro de valor de las inversiones inmobiliarias
+account A:NoCorriente:Deterioro:2920                                     ; type: A, desc: deterioro de valor de los terrenos y bienes naturales
+account A:NoCorriente:Deterioro:2921-ValorConstrucciones                 ; type: A, desc: deterioro de valor de construcciones
+account A:NoCorriente:Deterioro:293                                      ; type: A, desc: deterioro de valor de participaciones a largo plazo en partes vinculadas
+account A:NoCorriente:Deterioro:2933                                     ; type: A, desc: deterioro de valor de participaciones a largo plazo en empresas del grupo
+account A:NoCorriente:Deterioro:2934                                     ; type: A, desc: deterioro de valor de participaciones a largo plazo en empresas asociadas
+account A:NoCorriente:Deterioro:2935                                     ; type: A, desc: deterioro de valor de participaciones a largo plazo en otras partes vinculadas
+account A:NoCorriente:Deterioro:294                                      ; type: A, desc: deterioro de valor de valores representativos de deuda a largo plazo de partes vinculadas
+account A:NoCorriente:Deterioro:2943                                     ; type: A, desc: deterioro de valor de valores representativos de deuda a largo plazo de empresas del grupo
+account A:NoCorriente:Deterioro:2944                                     ; type: A, desc: deterioro de valor de valores representativos de deuda a largo plazo de empresas asociadas
+account A:NoCorriente:Deterioro:2945                                     ; type: A, desc: deterioro de valor de valores representativos de deuda a largo plazo de otras partes vinculadas
+account A:NoCorriente:Deterioro:295                                      ; type: A, desc: deterioro de valor de creditos a lar go plazo a partes vinculadas
+account A:NoCorriente:Deterioro:2953                                     ; type: A, desc: deterioro de valor de creditos a largo plazo a empresas del grupo
+account A:NoCorriente:Deterioro:2954                                     ; type: A, desc: deterioro de valor de creditos a largo plazo a empresas asociadas
+account A:NoCorriente:Deterioro:2955                                     ; type: A, desc: deterioro de valor de creditos a largo plazo a otras partes vinculadas
+account A:NoCorriente:Deterioro:296                                      ; type: A, desc: deterioro de valor de participaciones en el patrimonio neto a largo plazo
+account A:NoCorriente:Deterioro:297                                      ; type: A, desc: deterioro de valor de valores representativos de deuda a largo plazo
+account A:NoCorriente:Deterioro:298                                      ; type: A, desc: deterioro de valor de creditos a largo plazo
+account A:Existencias                                                    ; type: A, desc: existencias
+account A:Existencias:Comerciales:30                                     ; type: A, desc: comerciales
+account A:Existencias:Comerciales:300-Mercaderias                        ; type: A, desc: mercaderias a
+account A:Existencias:Comerciales:301-MercaderiasB                       ; type: A, desc: mercaderias b
+account A:Existencias:MateriasPrimas:31                                  ; type: A, desc: materias primas
+account A:Existencias:MateriasPrimas:310                                 ; type: A, desc: materias primas a
+account A:Existencias:MateriasPrimas:311-B                               ; type: A, desc: materias primas b
+account A:Existencias:OtrosAprovisionamientos:32                         ; type: A, desc: otros aprovisionamientos
+account A:Existencias:OtrosAprovisionamientos:320-ElementosYConjuntosIncorporables     ; type: A, desc: elementos y conjuntos incorporables
+account A:Existencias:OtrosAprovisionamientos:321-Combustibles           ; type: A, desc: combustibles
+account A:Existencias:OtrosAprovisionamientos:322-Repuestos              ; type: A, desc: repuestos
+account A:Existencias:OtrosAprovisionamientos:325-MaterialDiversos       ; type: A, desc: materiales diversos
+account A:Existencias:OtrosAprovisionamientos:326-Embalajes              ; type: A, desc: embalajes
+account A:Existencias:OtrosAprovisionamientos:327-Envases                ; type: A, desc: envases
+account A:Existencias:OtrosAprovisionamientos:328-MaterialOficina        ; type: A, desc: material de oficina
+account A:Existencias:ProductosEnCurso:33                                ; type: A, desc: productos en curso
+account A:Existencias:ProductosEnCurso:330                               ; type: A, desc: productos en curso a
+account A:Existencias:ProductosEnCurso:331-B                             ; type: A, desc: productos en curso b
+account A:Existencias:ProductosSemiterminados:34                         ; type: A, desc: productos semiterminados
+account A:Existencias:ProductosSemiterminados:340                        ; type: A, desc: productos semiterminados a
+account A:Existencias:ProductosSemiterminados:341-B                      ; type: A, desc: productos semiterminados b
+account A:Existencias:ProductosTerminados:35                             ; type: A, desc: productos terminados
+account A:Existencias:ProductosTerminados:350                            ; type: A, desc: productos terminados a
+account A:Existencias:ProductosTerminados:351-B                          ; type: A, desc: productos terminados b
+account A:Existencias:Subproductos:36                                    ; type: A, desc: subproductos, residuos y materiales recuperados
+account A:Existencias:Subproductos:360                                   ; type: A, desc: subproductos a
+account A:Existencias:Subproductos:361-B                                 ; type: A, desc: subproductos b
+account A:Existencias:Subproductos:365-Residuos                          ; type: A, desc: residuos a
+account A:Existencias:Subproductos:366-ResiduosB                         ; type: A, desc: residuos b
+account A:Existencias:Subproductos:368-MaterialRecuperados               ; type: A, desc: materiales recuperados a
+account A:Existencias:Subproductos:369-MaterialRecuperadosB              ; type: A, desc: materiales recuperados b
+account A:Existencias:Deterioro:39                                       ; type: A, desc: deterioro de valor de las existencias
+account A:Existencias:Deterioro:390                                      ; type: A, desc: deterioro de valor de las mercaderias
+account A:Existencias:Deterioro:391                                      ; type: A, desc: deterioro de valor de las materias primas
+account A:Existencias:Deterioro:392                                      ; type: A, desc: deterioro de valor de otros aprovisionamientos
+account A:Existencias:Deterioro:393                                      ; type: A, desc: deterioro de valor de los productos en curso
+account A:Existencias:Deterioro:394                                      ; type: A, desc: deterioro de valor de los productos semiterminados
+account A:Existencias:Deterioro:395                                      ; type: A, desc: deterioro de valor de los productos ter minados
+account A:Existencias:Deterioro:396                                      ; type: A, desc: deterioro de valor de los subproductos, residuos y materiales recuperados
+account P:Proveedores                                                    ; type: L, desc: acreedores y deudores por operaciones comerciales
+account P:Proveedores:Proveedores:40                                     ; type: L, desc: proveedores
+account P:Proveedores:Proveedores:400                                    ; type: L, desc: proveedores
+account P:Proveedores:Proveedores:4000-Euros                             ; type: L, desc: proveedores (euros)
+account P:Proveedores:Proveedores:4004-MonedaExtranjera                  ; type: L, desc: proveedores (moneda extranjera)
+account P:Proveedores:Proveedores:4009                                   ; type: L, desc: proveedores, facturas pendientes de recibir o de formalizar
+account P:Proveedores:Proveedores:401                                    ; type: L, desc: proveedores, efectos comerciales a pagar
+account P:Proveedores:Proveedores:403                                    ; type: L, desc: proveedores, empresas del grupo
+account P:Proveedores:Proveedores:4030                                   ; type: L, desc: proveedores, empresas del grupo (euros)
+account P:Proveedores:Proveedores:4031                                   ; type: L, desc: efectos comerciales a pagar, empresas del grupo
+account P:Proveedores:Proveedores:4034                                   ; type: L, desc: proveedores, empresas del grupo (moneda extranjera)
+account P:Proveedores:Proveedores:4036                                   ; type: L, desc: envases y embalajes a devolver a proveedores, empresas del grupo
+account P:Proveedores:Proveedores:4039                                   ; type: L, desc: proveedores, empresas del grupo, facturas pendientes de recibir o de formalizar
+account P:Proveedores:Proveedores:404                                    ; type: L, desc: proveedores, empresas asociadas
+account P:Proveedores:Proveedores:405                                    ; type: L, desc: proveedores, otras partes vinculadas
+account P:Proveedores:Proveedores:406                                    ; type: L, desc: envases y embalajes a devolver a proveedores
+account P:Proveedores:Proveedores:407-AnticiposProveedores               ; type: L, desc: anticipos a proveedores
+account P:Proveedores:Acreedores:41                                      ; type: L, desc: acreedores varios
+account P:Proveedores:Acreedores:410-PrestacionesServicios               ; type: L, desc: acreedores por prestaciones de servicios
+account P:Proveedores:Acreedores:4100                                    ; type: L, desc: acreedores por prestaciones de servicios (euros)
+account P:Proveedores:Acreedores:4104                                    ; type: L, desc: acreedores por prestaciones de servicios, (moneda extranjera)
+account P:Proveedores:Acreedores:4109                                    ; type: L, desc: acreedores por prestaciones de servicios, facturas pendientes de recibir o de formalizar
+account P:Proveedores:Acreedores:411                                     ; type: L, desc: acreedores, efectos comerciales a pagar
+account P:Proveedores:Acreedores:419-OperacionesEnComun                  ; type: L, desc: acreedores por operaciones en comun
+account P:Proveedores:Clientes:43                                        ; type: L, desc: clientes
+account P:Proveedores:Clientes:430                                       ; type: L, desc: clientes
+account P:Proveedores:Clientes:4300-Euros                                ; type: L, desc: clientes (euros)
+account P:Proveedores:Clientes:4304-MonedaExtranjera                     ; type: L, desc: clientes (moneda extranjera)
+account P:Proveedores:Clientes:4309                                      ; type: L, desc: clientes, facturas pendientes de formalizar
+account P:Proveedores:Clientes:431                                       ; type: L, desc: clientes, efectos comerciales a cobrar
+account P:Proveedores:Clientes:4310-EfectosComercialesEnCartera          ; type: L, desc: efectos comerciales en cartera
+account P:Proveedores:Clientes:4311-EfectosComercialesDescontados        ; type: L, desc: efectos comerciales descontados
+account P:Proveedores:Clientes:4312                                      ; type: L, desc: efectos comerciales en gestion de cobro
+account P:Proveedores:Clientes:4315-EfectosComercialesImpagados          ; type: L, desc: efectos comerciales impagados
+account P:Proveedores:Clientes:432                                       ; type: L, desc: clientes, operaciones de <<factoring>>
+account P:Proveedores:Clientes:433                                       ; type: L, desc: clientes, empresas del grupo
+account P:Proveedores:Clientes:4330-EmpresasDelGrupoEuros                ; type: L, desc: clientes empresas del grupo (euros)
+account P:Proveedores:Clientes:4331                                      ; type: L, desc: efectos comerciales a cobrar, empresas del grupo
+account P:Proveedores:Clientes:4332                                      ; type: L, desc: clientes empresas del grupo, operaciones de <<factoring>>
+account P:Proveedores:Clientes:4334                                      ; type: L, desc: clientes empresas del grupo (moneda extranjera)
+account P:Proveedores:Clientes:4336                                      ; type: L, desc: clientes empresas del grupo de dudoso cobro
+account P:Proveedores:Clientes:4337                                      ; type: L, desc: envases y embalajes a devolver a clientes, empresas del grupo
+account P:Proveedores:Clientes:4339                                      ; type: L, desc: clientes empresas del grupo, facturas pendientes de formalizar
+account P:Proveedores:Clientes:434                                       ; type: L, desc: clientes, empresas asociadas
+account P:Proveedores:Clientes:435                                       ; type: L, desc: clientes, otras partes vinculadas
+account P:Proveedores:Clientes:436-DudosoCobro                           ; type: L, desc: clientes de dudoso cobro
+account P:Proveedores:Clientes:437                                       ; type: L, desc: envases y embalajes a devolver por clientes
+account P:Proveedores:Clientes:438-AnticiposClientes                     ; type: L, desc: anticipos de clientes
+account P:Proveedores:DeudoresVarios:44                                  ; type: L, desc: deudores varios
+account P:Proveedores:DeudoresVarios:440-Deudores                        ; type: L, desc: deudores
+account P:Proveedores:DeudoresVarios:4400-DeudoresEuros                  ; type: L, desc: deudores (euros)
+account P:Proveedores:DeudoresVarios:4404-DeudoresMonedaExtranjera       ; type: L, desc: deudores (moneda extranjera)
+account P:Proveedores:DeudoresVarios:4409-Deudores                       ; type: L, desc: deudores, facturas pendientes de formalizar
+account P:Proveedores:DeudoresVarios:441-Deudores                        ; type: L, desc: deudores, efectos comerciales a cobrar
+account P:Proveedores:DeudoresVarios:4410-Deudores                       ; type: L, desc: deudores, efectos comerciales en cartera
+account P:Proveedores:DeudoresVarios:4411-Deudores                       ; type: L, desc: deudores, efectos comerciales descontados
+account P:Proveedores:DeudoresVarios:4412                                ; type: L, desc: deudores, efectos comerciales en gestion de cobro
+account P:Proveedores:DeudoresVarios:4415-Deudores                       ; type: L, desc: deudores, efectos comerciales impagados
+account P:Proveedores:DeudoresVarios:446-DeudoresDudosoCobro             ; type: L, desc: deudores de dudoso cobro
+account P:Proveedores:DeudoresVarios:449-DeudoresOperacionesEnComun      ; type: L, desc: deudores por operaciones en comun
+account P:Proveedores:Personal:46                                        ; type: L, desc: personal
+account P:Proveedores:Personal:460-AnticiposRemuneraciones               ; type: L, desc: anticipos de remuneraciones
+account P:Proveedores:Personal:465-RemuneracionesPendPago                ; type: L, desc: remuneraciones pendientes de pago
+account P:Proveedores:AdminPubl:47                                       ; type: L, desc: administraciones publicas
+account P:Proveedores:AdminPubl:470                                      ; type: L, desc: hacienda publica, deudora por diversos conceptos
+account P:Proveedores:AdminPubl:4700-HaciendaPubl                        ; type: L, desc: hacienda publica, deudora por iva
+account P:Proveedores:AdminPubl:4708                                     ; type: L, desc: hacienda publica, deudora por subvenciones concedidas
+account P:Proveedores:AdminPubl:4709                                     ; type: L, desc: hacienda publica, deudora por devolucion de impuestos
+account P:Proveedores:AdminPubl:471                                      ; type: L, desc: organismos de la seguridad social, deudores
+account P:Proveedores:AdminPubl:472-HaciendaPubl                         ; type: L, desc: hacienda publica, iva soportado
+account P:Proveedores:AdminPubl:473                                      ; type: L, desc: hacienda publica, retenciones y pagos a cuenta
+account P:Proveedores:AdminPubl:474-ActivosImpuestoDiferido              ; type: L, desc: activos por impuesto diferido
+account P:Proveedores:AdminPubl:4740-ActivosDiferenciasTemporariasDeducibles     ; type: L, desc: activos por diferencias temporarias deducibles
+account P:Proveedores:AdminPubl:4742                                     ; type: L, desc: derechos por deducciones y bonificaciones pendientes de aplicar
+account P:Proveedores:AdminPubl:4745                                     ; type: L, desc: credito por perdidas a compensar del ejercicio
+account P:Proveedores:AdminPubl:475                                      ; type: L, desc: hacienda publica, acreedora por conceptos fiscales
+account P:Proveedores:AdminPubl:4750-HaciendaPubl                        ; type: L, desc: hacienda publica, acreedora por iva
+account P:Proveedores:AdminPubl:4751                                     ; type: L, desc: hacienda publica, acreedora por retenciones practicadas
+account P:Proveedores:AdminPubl:4752                                     ; type: L, desc: hacienda publica, acreedora por impuesto sobre sociedades
+account P:Proveedores:AdminPubl:4758                                     ; type: L, desc: hacienda publica, acreedora por subvenciones a reintegrar
+account P:Proveedores:AdminPubl:476                                      ; type: L, desc: organismos de la seguridad social, acreedores
+account P:Proveedores:AdminPubl:477-HaciendaPubl                         ; type: L, desc: hacienda publica, iva repercutido
+account P:Proveedores:AdminPubl:479-PasivosDiferenciasTemporariasImponibles     ; type: L, desc: pasivos por diferencias temporarias imponibles
+account P:Proveedores:AjustesPeriodif:48                                 ; type: L, desc: ajustes por periodificacion
+account P:Proveedores:AjustesPeriodif:480-GastosAnticipados              ; type: L, desc: gastos anticipados
+account P:Proveedores:AjustesPeriodif:485-IngresosAnticipados            ; type: L, desc: ingresos anticipados
+account P:Proveedores:Deterioro:49                                       ; type: L, desc: deterioro de valor de creditos comerciales y provisiones a corto plazo
+account P:Proveedores:Deterioro:490                                      ; type: L, desc: deterioro de valor de creditos por operaciones comerciales
+account P:Proveedores:Deterioro:493                                      ; type: L, desc: deterioro de valor de creditos por operaciones comerciales con partes vinculadas
+account P:Proveedores:Deterioro:4933                                     ; type: L, desc: deterioro de valor de creditos por operaciones comerciales con empresas del grupo
+account P:Proveedores:Deterioro:4934                                     ; type: L, desc: deterioro de valor de creditos por operaciones comerciales con empresas asociadas
+account P:Proveedores:Deterioro:4935                                     ; type: L, desc: deterioro de valor de creditos por operaciones comerciales con otras partes vinculadas
+account P:Proveedores:Deterioro:499-ProvisOperacionesComerciales         ; type: L, desc: provisiones por operaciones comerciales
+account P:Proveedores:Deterioro:4994-ProvisContratosOnerosos             ; type: L, desc: provision por contratos onerosos
+account P:Proveedores:Deterioro:4999-ProvisParaOtrasOperacionesComerciales     ; type: L, desc: provision para otras operaciones comerciales
+account A:Corriente                                                      ; type: A, desc: cuentas financieras
+account P:Corriente:DeudasCortoPlazoEspeciales:50                        ; type: L, desc: emprestitos, deudas con caracteristicas especiales y otras emisiones analogas a corto plazo
+account P:Corriente:DeudasCortoPlazoEspeciales:500                       ; type: L, desc: obligaciones y bonos a corto plazo
+account P:Corriente:DeudasCortoPlazoEspeciales:502                       ; type: L, desc: acciones o participaciones a corto plazo consideradas como pasivos financieros
+account P:Corriente:DeudasCortoPlazoEspeciales:505                       ; type: L, desc: deudas representadas en otros valores negociables a corto plazo
+account P:Corriente:DeudasCortoPlazoEspeciales:506                       ; type: L, desc: intereses a corto plazo de emprestitos y otras emisiones analogas
+account P:Corriente:DeudasCortoPlazoEspeciales:507                       ; type: L, desc: dividendos de acciones o participaciones consideradas como pasivos financieros
+account P:Corriente:DeudasCortoPlazoEspeciales:509-esNegociablesAmortizados     ; type: L, desc: valores negociables amortizados
+account P:Corriente:DeudasCortoPlazoEspeciales:5090-ObligacionesYBonosAmortizados     ; type: L, desc: obligaciones y bonos amortizados
+account P:Corriente:DeudasCortoPlazoEspeciales:5095-OtrosValoresNegociablesAmortizados     ; type: L, desc: otros valores negociables amortizados
+account P:Corriente:DeudasCortoPlazoPartesVinc:51                        ; type: L, desc: deudas a corto plazo con partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:510                       ; type: L, desc: deudas a corto plazo con entidades de credito vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5103                      ; type: L, desc: deudas a corto plazo con entidades de credito, empresas del grupo
+account P:Corriente:DeudasCortoPlazoPartesVinc:5104                      ; type: L, desc: deudas a corto plazo con entidades de credito, empresas asociadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5105                      ; type: L, desc: deudas a corto plazo con otras entidades de credito vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:511                       ; type: L, desc: proveedores de inmovilizado a corto plazo, partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5113                      ; type: L, desc: proveedores de inmovilizado a corto plazo, empresas del grupo
+account P:Corriente:DeudasCortoPlazoPartesVinc:5114                      ; type: L, desc: proveedores de inmovilizado a corto plazo, empresas asociadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5115                      ; type: L, desc: proveedores de inmovilizado a corto plazo, otras partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:512                       ; type: L, desc: acreedores por arrendamiento financiero a corto plazo, partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5123                      ; type: L, desc: acreedores por arrendamiento financiero a corto plazo, empresas del grupo
+account P:Corriente:DeudasCortoPlazoPartesVinc:5124                      ; type: L, desc: acreedores por arrendamiento financiero a corto plazo, empresas asociadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5125                      ; type: L, desc: acreedores por arrendamiento financiero a corto plazo, otras partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:513                       ; type: L, desc: otras deudas a corto plazo con partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5133                      ; type: L, desc: otras deudas a corto plazo con empresas del grupo
+account P:Corriente:DeudasCortoPlazoPartesVinc:5134                      ; type: L, desc: otras deudas a corto plazo con empresas asociadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5135                      ; type: L, desc: otras deudas a corto plazo con otras partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:514                       ; type: L, desc: intereses a corto plazo de deudas con partes vinculadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5143                      ; type: L, desc: intereses a corto plazo de deudas, empresas del grupo
+account P:Corriente:DeudasCortoPlazoPartesVinc:5144                      ; type: L, desc: intereses a corto plazo de deudas, empresas asociadas
+account P:Corriente:DeudasCortoPlazoPartesVinc:5145                      ; type: L, desc: intereses a corto plazo de deudas, otras partes vinculadas
+account P:Corriente:DeudasCortoPlazo:52                                  ; type: L, desc: deudas a corto plazo por prestamos recibidos y otros conceptos
+account P:Corriente:DeudasCortoPlazo:520                                 ; type: L, desc: deudas a corto plazo con entidades de credito
+account P:Corriente:DeudasCortoPlazo:5200                                ; type: L, desc: prestamos a corto plazo de entidadesde credito
+account P:Corriente:DeudasCortoPlazo:5201                                ; type: L, desc: deudas a corto plazo por credito dispuesto
+account P:Corriente:DeudasCortoPlazo:5208-DeudasEfectosDescontados       ; type: L, desc: deudas por efectos descontados
+account P:Corriente:DeudasCortoPlazo:5209-DeudasOperacionesFactoring     ; type: L, desc: deudas por operaciones de <<factoring>>
+account P:Corriente:DeudasCortoPlazo:521                                 ; type: L, desc: deudas a corto plazo
+account P:Corriente:DeudasCortoPlazo:522                                 ; type: L, desc: deudas a corto plazo transformables en subvenciones, donaciones y legados
+account P:Corriente:DeudasCortoPlazo:523                                 ; type: L, desc: proveedores de inmovilizado a corto plazo
+account P:Corriente:DeudasCortoPlazo:524                                 ; type: L, desc: acreedores por arrendamiento financiero a corto plazo
+account P:Corriente:DeudasCortoPlazo:525                                 ; type: L, desc: efectos a pagar a corto plazo
+account P:Corriente:DeudasCortoPlazo:526-DividendoActivoPagar            ; type: L, desc: dividendo activo a pagar
+account P:Corriente:DeudasCortoPlazo:527                                 ; type: L, desc: intereses a corto plazo de deudas con entidades de credito
+account P:Corriente:DeudasCortoPlazo:528                                 ; type: L, desc: intereses a corto plazo de deudas
+account P:Corriente:DeudasCortoPlazo:529-ProvisCortoPlazo                ; type: L, desc: provisiones a corto plazo
+account P:Corriente:DeudasCortoPlazo:5291                                ; type: L, desc: provision a corto plazo para impuestos
+account P:Corriente:DeudasCortoPlazo:5292                                ; type: L, desc: provision a corto plazo para otras responsabilidades
+account P:Corriente:DeudasCortoPlazo:5293                                ; type: L, desc: provision a corto plazo por desmantelamiento, retiro o rehabilitacion del inmovilizado
+account P:Corriente:DeudasCortoPlazo:5295                                ; type: L, desc: provision a corto plazo para actuaciones medioambientales
+account A:Corriente:InvCortoPlazoPartesVinc:53                           ; type: A, desc: inversiones financieras a corto plazo en partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:530                          ; type: A, desc: participaciones a corto plazo en partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5303                         ; type: A, desc: participaciones a corto plazo, en empresas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5304                         ; type: A, desc: participaciones a corto plazo, en empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5305                         ; type: A, desc: participaciones a corto plazo, en otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:531                          ; type: A, desc: valores representativos de deuda a corto plazo de partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5313                         ; type: A, desc: valores representativos de deuda a corto plazo de empresas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5314                         ; type: A, desc: valores representativos de deuda a corto plazo de empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5315                         ; type: A, desc: valores representativos de deuda a corto plazo de otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:532                          ; type: A, desc: creditos a corto plazo a partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5323                         ; type: A, desc: creditos a corto plazo a empresas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5324                         ; type: A, desc: creditos a corto plazo a empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5325                         ; type: A, desc: creditos a corto plazo a otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:533                          ; type: A, desc: intereses a corto plazo de valores representativos de deuda de partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5333                         ; type: A, desc: intereses a corto plazo de valores representativos de deuda en empresas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5334                         ; type: A, desc: intereses a corto plazo de valores representativos de deuda en empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5335                         ; type: A, desc: intereses a corto plazo de valores representativos de deuda en otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:534                          ; type: A, desc: intereses a corto plazo de creditos a partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5343                         ; type: A, desc: intereses a corto plazo de creditos a empresas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5344                         ; type: A, desc: intereses a corto plazo de creditos a empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5345                         ; type: A, desc: intereses a corto plazo de creditos a otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:535                          ; type: A, desc: dividendo a cobrar de inversiones financieras en partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5353                         ; type: A, desc: dividendo a cobrar de empresas de grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5354                         ; type: A, desc: dividendo a cobrar de empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5355                         ; type: A, desc: dividendo a cobrar de otras partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:539                          ; type: A, desc: desembolsos pendientes sobre participaciones a corto plazo en partes vinculadas
+account A:Corriente:InvCortoPlazoPartesVinc:5393                         ; type: A, desc: desembolsos pendientes sobre participaciones a corto plazo en em presas del grupo
+account A:Corriente:InvCortoPlazoPartesVinc:5394                         ; type: A, desc: desembolsos pendientes sobre participaciones a corto plazo en empresas asociadas
+account A:Corriente:InvCortoPlazoPartesVinc:5395                         ; type: A, desc: desembolsos pendientes sobre participaciones a corto plazo en otras partes vinculadas
+account A:Corriente:InvCortoPlazoOtras:54                                ; type: A, desc: otras inversiones financieras a corto plazo
+account A:Corriente:InvCortoPlazoOtras:540                               ; type: A, desc: inversiones financieras a corto plazo en instrumentos de patrimonio
+account A:Corriente:InvCortoPlazoOtras:541                               ; type: A, desc: valores representativos de deuda a corto plazo
+account A:Corriente:InvCortoPlazoOtras:542-CreditosCortoPlazo            ; type: A, desc: creditos a corto plazo
+account A:Corriente:InvCortoPlazoOtras:543                               ; type: A, desc: creditos a corto plazo por enajenacion de inmovilizado
+account A:Corriente:InvCortoPlazoOtras:544                               ; type: A, desc: creditos a corto plazo al personal
+account A:Corriente:InvCortoPlazoOtras:545-DividendoCobrar               ; type: A, desc: dividendo a cobrar
+account A:Corriente:InvCortoPlazoOtras:546                               ; type: A, desc: intereses a corto plazo de valores representativos de deuda
+account A:Corriente:InvCortoPlazoOtras:547                               ; type: A, desc: intereses a corto plazo de creditos
+account A:Corriente:InvCortoPlazoOtras:548-ImposicionesCortoPlazo        ; type: A, desc: imposiciones a corto plazo
+account A:Corriente:InvCortoPlazoOtras:549                               ; type: A, desc: desembolsos pendientes sobre participaciones en el patrimonio neto a corto plazo
+account A:Corriente:OtrasCuentasNoBancarias:55                           ; type: A, desc: otras cuentas no bancarias
+account A:Corriente:OtrasCuentasNoBancarias:550-TitularLaExplotacion     ; type: A, desc: titular de la explotacion
+account A:Corriente:OtrasCuentasNoBancarias:551                          ; type: A, desc: cuenta corriente con socios y administradores
+account A:Corriente:OtrasCuentasNoBancarias:552                          ; type: A, desc: cuenta corriente con otras personas y entidades vinculadas
+account A:Corriente:OtrasCuentasNoBancarias:5523                         ; type: A, desc: cuenta corriente con empresas del grupo
+account A:Corriente:OtrasCuentasNoBancarias:5524-CuentaCorrienteConEmpresasAsoc     ; type: A, desc: cuenta corriente con empresas asociadas
+account A:Corriente:OtrasCuentasNoBancarias:5525                         ; type: A, desc: cuenta corriente con otras partes vinculadas
+account A:Corriente:OtrasCuentasNoBancarias:554                          ; type: A, desc: cuenta corriente con uniones temporales de empresas y comunidades de bienes
+account A:Corriente:OtrasCuentasNoBancarias:555-PartidasPend             ; type: A, desc: partidas pendientes de aplicacion
+account A:Corriente:OtrasCuentasNoBancarias:556                          ; type: A, desc: desembolsos exigidos sobre participaciones en el patrimonio neto
+account A:Corriente:OtrasCuentasNoBancarias:5563                         ; type: A, desc: desembolsos exigidos sobre participaciones, empresas del grupo
+account A:Corriente:OtrasCuentasNoBancarias:5564                         ; type: A, desc: desembolsos exigidos sobre participaciones, empresas asociadas
+account A:Corriente:OtrasCuentasNoBancarias:5565                         ; type: A, desc: desembolsos exigidos sobre participaciones, otras partes vinculadas
+account A:Corriente:OtrasCuentasNoBancarias:5566                         ; type: A, desc: desembolsos exigidos sobre participaciones de otras empresas
+account A:Corriente:OtrasCuentasNoBancarias:557-DividendoActivoCuenta     ; type: A, desc: dividendo activo a cuenta
+account A:Corriente:OtrasCuentasNoBancarias:558-SociosDesemExigidos      ; type: A, desc: socios por desembolsos exigidos
+account A:Corriente:OtrasCuentasNoBancarias:5580                         ; type: A, desc: socios por desembolsos exigidos sobre acciones o participaciones ordinarias
+account A:Corriente:OtrasCuentasNoBancarias:5585                         ; type: A, desc: socios por desembolsos exigidos sobre acciones o participaciones consideradas como pasivos financieros
+account A:Corriente:OtrasCuentasNoBancarias:559-DerivadosFinancierosCortoPlazo     ; type: A, desc: derivados financieros a corto plazo
+account A:Corriente:OtrasCuentasNoBancarias:5590                         ; type: A, desc: activos por derivados financieros a corto plazo
+account A:Corriente:OtrasCuentasNoBancarias:5595                         ; type: A, desc: pasivos por derivados financieros a corto plazo
+account P:Corriente:FianzasRecibidas:56                                  ; type: L, desc: fianzas y depositos recibidos y constituidos a cor to plazo y ajustes por periodificacion
+account P:Corriente:FianzasRecibidas:560-CortoPlazo                      ; type: L, desc: fianzas recibidas a corto plazo
+account P:Corriente:FianzasRecibidas:561-DepositosRecibidosCortoPlazo     ; type: L, desc: depositos recibidos a corto plazo
+account P:Corriente:FianzasRecibidas:565-FianzasConstituidasCortoPlazo     ; type: L, desc: fianzas constituidas a corto plazo
+account P:Corriente:FianzasRecibidas:566-DepositosConstituidosCortoPlazo     ; type: L, desc: depositos constituidos a corto plazo
+account P:Corriente:FianzasRecibidas:567-InteresesPagadosAnticipado      ; type: L, desc: intereses pagados por anticipado
+account P:Corriente:FianzasRecibidas:568-InteresesCobradosAnticipado     ; type: L, desc: intereses cobrados por anticipado
+account A:Corriente:Tesoreria:57                                         ; type: C, desc: tesoreria
+account A:Corriente:Tesoreria:570-Caja                                   ; type: C, desc: caja, euros
+account A:Corriente:Tesoreria:571-Caja                                   ; type: C, desc: caja, moneda extranjera
+account A:Corriente:Tesoreria:572-BancosVista                            ; type: C, desc: bancos e instituciones de credito c/c vista, euros
+account A:Corriente:Tesoreria:573-BancosVistaMonedaExtranjera            ; type: C, desc: bancos e instituciones de credito c/c vista, moneda extranjera
+account A:Corriente:Tesoreria:574-Bancos                                 ; type: C, desc: bancos e instituciones de credito, cuentas de ahorro, euros
+account A:Corriente:Tesoreria:575-BancosMonedaExtranjera                 ; type: C, desc: bancos e instituciones de credito, cuentas de ahorro, moneda extranjera
+account A:Corriente:Tesoreria:576                                        ; type: C, desc: inversiones a corto plazo de gran liquidez
+account A:Corriente:Deterioro:59                                         ; type: A, desc: deterioro del valor de inversiones financieras a corto plazo
+account A:Corriente:Deterioro:593                                        ; type: A, desc: deterioro de valor de participaciones a corto plazo en partes vinculadas
+account A:Corriente:Deterioro:5933                                       ; type: A, desc: deterioro de valor de participaciones a corto plazo en empresas del grupo
+account A:Corriente:Deterioro:5934                                       ; type: A, desc: deterioro de valor de participaciones a corto plazo en empresas asociadas
+account A:Corriente:Deterioro:5935                                       ; type: A, desc: deterioro de valor de participaciones a corto plazo en otras partes vinculadas
+account A:Corriente:Deterioro:594                                        ; type: A, desc: deterioro de valor de valores representativos de deuda a corto plazo de partes vinculadas
+account A:Corriente:Deterioro:5943                                       ; type: A, desc: deterioro de valor de valores representativos de deuda a corto plazo de empresas del grupo
+account A:Corriente:Deterioro:5944                                       ; type: A, desc: deterioro de valor de valores representativos de deuda a corto plazo de empresas asociadas
+account A:Corriente:Deterioro:5945                                       ; type: A, desc: deterioro de valor de valores representativos de deuda a corto plazo de otras partes vinculadas
+account A:Corriente:Deterioro:595                                        ; type: A, desc: deterioro de valor de creditos a corto plazo a partes vinculadas
+account A:Corriente:Deterioro:5953                                       ; type: A, desc: deterioro de valor de creditos a corto plazo a empresas del grupo
+account A:Corriente:Deterioro:5954                                       ; type: A, desc: deterioro de valor de creditos a corto plazo a empresas asociadas
+account A:Corriente:Deterioro:5955                                       ; type: A, desc: deterioro de valor de creditos a corto plazo a otras partes vinculadas
+account A:Corriente:Deterioro:596                                        ; type: A, desc: deterioro de valor de participaciones a corto plazo
+account A:Corriente:Deterioro:597                                        ; type: A, desc: deterioro de valor de valores representativos de deuda a corto plazo
+account A:Corriente:Deterioro:598                                        ; type: A, desc: deterioro de valor de creditos a corto plazo
+account G                                                                ; type: X, desc: compras y gastos
+account G:Compras:60                                                     ; type: X, desc: compras
+account G:Compras:600-Mercaderias                                        ; type: X, desc: compras de mercaderias
+account G:Compras:601-MateriasPrimas                                     ; type: X, desc: compras de materias primas
+account G:Compras:602-OtrosAprovisionamientos                            ; type: X, desc: compras de otros aprovisionamientos
+account G:Compras:606                                                    ; type: X, desc: descuentos sobre compras por pronto pago
+account G:Compras:6060                                                   ; type: X, desc: descuentos sobre compras por pronto pago de mercaderias
+account G:Compras:6061                                                   ; type: X, desc: descuentos sobre compras por pronto pago de materias primas
+account G:Compras:6062                                                   ; type: X, desc: descuentos sobre compras por pronto pago de otros aprovisionamientos
+account G:Compras:607-TrabajosRealizadosOtrasEmpresas                    ; type: X, desc: trabajos realizados por otras empresas
+account G:Compras:608                                                    ; type: X, desc: devoluciones de compras y operaciones similares
+account G:Compras:6080-DevolucionesComprasMercaderias                    ; type: X, desc: devoluciones de compras de mercaderias
+account G:Compras:6081                                                   ; type: X, desc: devoluciones de compras de materias primas
+account G:Compras:6082                                                   ; type: X, desc: devoluciones de compras de otros aprovisionamientos
+account G:Compras:609-RappelsCompras                                     ; type: X, desc: <<rappels>> por compras
+account G:Compras:6090-RappelsComprasMercaderias                         ; type: X, desc: <<rappels>> por compras de mercaderias
+account G:Compras:6091                                                   ; type: X, desc: <<rappels>> por compras de materias primas
+account G:Compras:6092                                                   ; type: X, desc: <<rappels>> por compras de otros aprovisionamientos
+account G:VariacionExistencias:61                                        ; type: X, desc: variacion de existencias
+account G:VariacionExistencias:610-Mercaderias                           ; type: X, desc: variacion de existencias de mercaderias
+account G:VariacionExistencias:611                                       ; type: X, desc: variacion de existencias de materias primas
+account G:VariacionExistencias:612                                       ; type: X, desc: variacion de existencias de otros aprovisionamientos
+account G:ServiciosExteriores:62                                         ; type: X, desc: servicios exteriores
+account G:ServiciosExteriores:620                                        ; type: X, desc: gastos en investigacion y desarrollo del ejercicio
+account G:ServiciosExteriores:621-ArrendamientosYCanones                 ; type: X, desc: arrendamientos y canones
+account G:ServiciosExteriores:622-ReparacionesYConservacion              ; type: X, desc: reparaciones y conservacion
+account G:ServiciosExteriores:623-ServiciosProfesionalesIndependientes     ; type: X, desc: servicios de profesionales independientes
+account G:ServiciosExteriores:624-Transportes                            ; type: X, desc: transportes
+account G:ServiciosExteriores:625-PrimasSeguros                          ; type: X, desc: primas de seguros
+account G:ServiciosExteriores:626-ServiciosBancarios                     ; type: X, desc: servicios bancarios y similares
+account G:ServiciosExteriores:627-Publ                                   ; type: X, desc: publicidad, propaganda y relaciones publicas
+account G:ServiciosExteriores:628-Suministros                            ; type: X, desc: suministros
+account G:ServiciosExteriores:629-OtrosServicios                         ; type: X, desc: otros servicios
+account G:Tributos:63                                                    ; type: X, desc: tributos
+account G:Tributos:630-ImpuestoSobreBeneficios                           ; type: X, desc: impuesto sobre beneficios
+account G:Tributos:6300-ImpuestoCorriente                                ; type: X, desc: impuesto corriente
+account G:Tributos:6301-ImpuestoDiferido                                 ; type: X, desc: impuesto diferido
+account G:Tributos:631-OtrosTributos                                     ; type: X, desc: otros tributos
+account G:Tributos:633                                                   ; type: X, desc: ajustes negativos en la imposicion sobre be neficios
+account G:Tributos:634                                                   ; type: X, desc: ajustes negativos en la imposicion indirecta
+account G:Tributos:6341                                                  ; type: X, desc: ajustes negativos en iva de activo corriente
+account G:Tributos:6342                                                  ; type: X, desc: ajustes negativos en iva de inversiones
+account G:Tributos:636-DevolucionImpuestos                               ; type: X, desc: devolucion de impuestos
+account G:Tributos:638                                                   ; type: X, desc: ajustes positivos en la imposicion sobre beneficios
+account G:Tributos:639                                                   ; type: X, desc: ajustes positivos en la imposicion indirecta
+account G:Tributos:6391                                                  ; type: X, desc: ajustes positivos en iva de activo corriente
+account G:Tributos:6392                                                  ; type: X, desc: ajustes positivos en iva de inversiones
+account G:GastosPersonal:64                                              ; type: X, desc: gastos de personal
+account G:GastosPersonal:640-SueldosYSalarios                            ; type: X, desc: sueldos y salarios
+account G:GastosPersonal:641-Indemnizaciones                             ; type: X, desc: indemnizaciones
+account G:GastosPersonal:642                                             ; type: X, desc: seguridad social a cargo de la empresa
+account G:GastosPersonal:649-OtrosGastosSociales                         ; type: X, desc: otros gastos sociales
+account G:OtrosGastosGestion:65                                          ; type: X, desc: otros gastos de gestion
+account G:OtrosGastosGestion:650-PerdidasCreditosComercialesIncobrables     ; type: X, desc: perdidas de creditos comerciales incobrables
+account G:OtrosGastosGestion:651-ResulOperacionesEnComun                 ; type: X, desc: resultados de operaciones en comun
+account G:OtrosGastosGestion:6510-BeneficioTransferido(gestor)           ; type: X, desc: beneficio transferido (gestor)
+account G:OtrosGastosGestion:6511                                        ; type: X, desc: perdida soportada (participe o asociado no gestor)
+account G:OtrosGastosGestion:659-OtrasPerdidasEnGestionCorriente         ; type: X, desc: otras perdidas en gestion corriente
+account G:GastosFinancieros:66                                           ; type: X, desc: gastos financieros
+account G:GastosFinancieros:660                                          ; type: X, desc: gastos financieros por actualizacion de provisiones
+account G:GastosFinancieros:661-InteresesObligacionesYBonos              ; type: X, desc: intereses de obligaciones y bonos
+account G:GastosFinancieros:6610                                         ; type: X, desc: intereses de obligaciones y bonos a largo plazo, empresas del grupo
+account G:GastosFinancieros:6611                                         ; type: X, desc: intereses de obligaciones y bonos a largo plazo, empresas asociadas
+account G:GastosFinancieros:6612                                         ; type: X, desc: intereses de obligaciones y bonos a largo plazo, otras partes vinculadas
+account G:GastosFinancieros:6613                                         ; type: X, desc: intereses de obligaciones y bonos a largo plazo, otras empresas
+account G:GastosFinancieros:6615                                         ; type: X, desc: intereses de obligaciones y bonos a corto plazo, empresas del grupo
+account G:GastosFinancieros:6616                                         ; type: X, desc: intereses de obligaciones y bonos a corto plazo, empresas asociadas
+account G:GastosFinancieros:6617                                         ; type: X, desc: intereses de obligaciones y bonos a corto plazo, otras partes vinculadas
+account G:GastosFinancieros:6618                                         ; type: X, desc: intereses de obligaciones y bonos a corto plazo, otras empresas
+account G:GastosFinancieros:662-InteresesDeudas                          ; type: X, desc: intereses de deudas
+account G:GastosFinancieros:6620                                         ; type: X, desc: intereses de deudas, empresas del grupo
+account G:GastosFinancieros:6621-InteresesDeudas                         ; type: X, desc: intereses de deudas, empresas asociadas
+account G:GastosFinancieros:6622                                         ; type: X, desc: intereses de deudas, otras partes vinculadas
+account G:GastosFinancieros:6623                                         ; type: X, desc: intereses de deudas con entidades de credito
+account G:GastosFinancieros:6624-InteresesDeudas                         ; type: X, desc: intereses de deudas, otras empresas
+account G:GastosFinancieros:663                                          ; type: X, desc: perdidas por valoracion de activos y pasivos financieros por su valor razonable
+account G:GastosFinancieros:664                                          ; type: X, desc: dividendos de acciones o participaciones consideradas como pasivos financieros
+account G:GastosFinancieros:6640                                         ; type: X, desc: dividendos de pasivos, empresas del grupo
+account G:GastosFinancieros:6641-DividendosPasivos                       ; type: X, desc: dividendos de pasivos, empresas asociadas
+account G:GastosFinancieros:6642                                         ; type: X, desc: dividendos de pasivos, otras partes vinculadas
+account G:GastosFinancieros:6643-DividendosPasivos                       ; type: X, desc: dividendos de pasivos, otras empresas
+account G:GastosFinancieros:665                                          ; type: X, desc: intereses por descuento de efectos y operaciones de <<factoring>>
+account G:GastosFinancieros:6650                                         ; type: X, desc: intereses por descuento de efectos en entidades de credito del grupo
+account G:GastosFinancieros:6651                                         ; type: X, desc: intereses por descuento de efectos en entidades de credito asociadas
+account G:GastosFinancieros:6652                                         ; type: X, desc: intereses por descuento de efectos en otras entidades de credito vinculadas
+account G:GastosFinancieros:6653                                         ; type: X, desc: intereses por descuento de efectos en otras entidades de credito
+account G:GastosFinancieros:6654                                         ; type: X, desc: intereses por operaciones de <<factoring>> con entidades de credito del grupo
+account G:GastosFinancieros:6655                                         ; type: X, desc: intereses por operaciones de <<factoring>> con entidades de credito asociadas
+account G:GastosFinancieros:6656                                         ; type: X, desc: intereses por operaciones de <<factoring>> con otras entidades de creditovinculadas
+account G:GastosFinancieros:6657                                         ; type: X, desc: intereses por operaciones de <<factoring>> con otras entidades de credito
+account G:GastosFinancieros:666                                          ; type: X, desc: perdidas en participaciones y valores representativos de deuda
+account G:GastosFinancieros:6660                                         ; type: X, desc: perdidas en valores representativos de deuda a largo plazo, empresas del grupo
+account G:GastosFinancieros:6661                                         ; type: X, desc: perdidas en valores representativos de deuda a largo plazo, empresas asociadas
+account G:GastosFinancieros:6662                                         ; type: X, desc: perdidas en valores representativos de deuda a largo plazo, otras partes vinculadas
+account G:GastosFinancieros:6663                                         ; type: X, desc: perdidas en participaciones y valores representativos de deuda a largo plazo, otras empresas
+account G:GastosFinancieros:6665                                         ; type: X, desc: perdidas en participaciones y valoresrepresentativos de deuda a corto plazo, empresas del grupo
+account G:GastosFinancieros:6666                                         ; type: X, desc: perdidas en participaciones y valores representativos de deuda a corto plazo, empresas asociadas
+account G:GastosFinancieros:6667                                         ; type: X, desc: perdidas en valores representativos de deuda a corto plazo, otras partes vinculadas
+account G:GastosFinancieros:6668                                         ; type: X, desc: perdidas en valores representativos de deuda a corto plazo, otras empresas
+account G:GastosFinancieros:667-PerdidasCreditosNoComerciales            ; type: X, desc: perdidas de creditos no comerciales
+account G:GastosFinancieros:6670                                         ; type: X, desc: perdidas de creditos a largo plazo, empresas del grupo
+account G:GastosFinancieros:6671                                         ; type: X, desc: perdidas de creditos a largo plazo, empresas asociadas
+account G:GastosFinancieros:6672                                         ; type: X, desc: perdidas de creditos a largo plazo, otras partes vinculadas
+account G:GastosFinancieros:6673                                         ; type: X, desc: perdidas de creditos a largo plazo, otras empresas
+account G:GastosFinancieros:6675                                         ; type: X, desc: perdidas de creditos a corto plazo, empresas del grupo
+account G:GastosFinancieros:6676                                         ; type: X, desc: perdidas de creditos a corto plazo, empresas asociadas
+account G:GastosFinancieros:6677                                         ; type: X, desc: perdidas de creditos a corto plazo, otras partes vinculadas
+account G:GastosFinancieros:6678                                         ; type: X, desc: perdidas de creditos a corto plazo, otras empresas
+account G:GastosFinancieros:668-DiferenciasNegativasCambio               ; type: X, desc: diferencias negativas de cambio
+account G:GastosFinancieros:669-OtrosGastosFinancieros                   ; type: X, desc: otros gastos financieros
+account G:ActivosNoCorrientes:67                                         ; type: X, desc: perdidas procedentes de activos nocorrientes y gastos excepcionales
+account G:ActivosNoCorrientes:670-PerdidasInmIntang                      ; type: X, desc: perdidas procedentes del inmovilizado intangible
+account G:ActivosNoCorrientes:671-PerdidasInmMaterial                    ; type: X, desc: perdidas procedentes del inmovilizado material
+account G:ActivosNoCorrientes:672                                        ; type: X, desc: perdidas procedentes de las inversiones inmobiliarias
+account G:ActivosNoCorrientes:673                                        ; type: X, desc: perdidas procedentes de participaciones a largo plazo en partes vinculadas
+account G:ActivosNoCorrientes:6733                                       ; type: X, desc: perdidas procedentes de participaciones a largo plazo, empresas del grupo
+account G:ActivosNoCorrientes:6734                                       ; type: X, desc: perdidas procedentes de participaciones a largo plazo, empresas asociadas
+account G:ActivosNoCorrientes:6735                                       ; type: X, desc: perdidas procedentes de participaciones a largo plazo, otras partes vinculadas
+account G:ActivosNoCorrientes:675                                        ; type: X, desc: perdidas por operaciones con obli gaciones propias
+account G:ActivosNoCorrientes:678-GastosExcepcionales                    ; type: X, desc: gastos excepcionales
+account G:DotacionesParaAmortizes:68                                     ; type: X, desc: dotaciones para amortizaciones
+account G:DotacionesParaAmortizes:680-AmortizDelInmIntang                ; type: X, desc: amortizacion del inmovilizado intangible
+account G:DotacionesParaAmortizes:681-AmortizDelInmMaterial              ; type: X, desc: amortizacion del inmovilizado material
+account G:DotacionesParaAmortizes:682-AmortizLasInversionesInmob         ; type: X, desc: amortizacion de las inversiones inmobiliarias
+account G:Deterioro:69                                                   ; type: X, desc: perdidas por deterioro y otras dotaciones
+account G:Deterioro:690                                                  ; type: X, desc: perdidas por deterioro del inmovilizado intangible
+account G:Deterioro:691                                                  ; type: X, desc: perdidas por deterioro del inmovilizado material
+account G:Deterioro:692                                                  ; type: X, desc: perdidas por deterioro de las inversiones inmobiliarias
+account G:Deterioro:693-PerdidasDeterioroExistencias                     ; type: X, desc: perdidas por deterioro de existencias
+account G:Deterioro:6930                                                 ; type: X, desc: perdidas por deterioro de productos terminados y en curso de fabricacion
+account G:Deterioro:6931-PerdidasDeterioroMercaderias                    ; type: X, desc: perdidas por deterioro de mercaderias
+account G:Deterioro:6932                                                 ; type: X, desc: perdidas por deterioro de materias primas
+account G:Deterioro:6933                                                 ; type: X, desc: perdidas por deterioro de otros aprovisionamientos
+account G:Deterioro:694                                                  ; type: X, desc: perdidas por deterioro de creditos por operaciones comerciales
+account G:Deterioro:695                                                  ; type: X, desc: dotacion a la provision por operaciones comerciales
+account G:Deterioro:6954                                                 ; type: X, desc: dotacion a la provision por contratos onerosos
+account G:Deterioro:6959                                                 ; type: X, desc: dotacion a la provision para otras operaciones comerciales
+account G:Deterioro:696                                                  ; type: X, desc: perdidas por deterioro de participaciones y valores representativos de deuda a largo plazo
+account G:Deterioro:6960                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas del grupo
+account G:Deterioro:6961                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas asociadas
+account G:Deterioro:6962                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, otras partes vinculadas
+account G:Deterioro:6963                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, otras empresas
+account G:Deterioro:6965                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a largo plazo, empresas del grupo
+account G:Deterioro:6966                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a largo plazo, empresas asociadas
+account G:Deterioro:6967                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a largo plazo, otras partes vinculadas
+account G:Deterioro:6968                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a largo plazo, de otras empresas
+account G:Deterioro:697                                                  ; type: X, desc: perdidas por deterioro de creditos a largo plazo
+account G:Deterioro:6970                                                 ; type: X, desc: perdidas por deterioro de creditos a largo plazo, empresas del grupo
+account G:Deterioro:6971                                                 ; type: X, desc: perdidas por deterioro de creditos a largo plazo, empresas asociadas
+account G:Deterioro:6972                                                 ; type: X, desc: perdidas por deterioro de creditos a largo plazo, otras partes vinculadas
+account G:Deterioro:6973                                                 ; type: X, desc: perdidas por deterioro de creditos a largo plazo, otras empresas
+account G:Deterioro:698                                                  ; type: X, desc: perdidas por deterioro de participaciones y valores representativos de deuda a corto plazo
+account G:Deterioro:6980                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas del grupo
+account G:Deterioro:6981                                                 ; type: X, desc: perdidas por deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas asociadas
+account G:Deterioro:6985                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a corto plazo, empresas del grupo
+account G:Deterioro:6986                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a corto plazo, empresas asociadas
+account G:Deterioro:6987                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a corto plazo, otras partes vinculadas
+account G:Deterioro:6988                                                 ; type: X, desc: perdidas por deterioro en valores representativos de deuda a corto plazo, de otras empresas
+account G:Deterioro:699                                                  ; type: X, desc: perdidas por deterioro de creditos a cortoplazo
+account G:Deterioro:6990                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, empresas del grupo
+account G:Deterioro:6991                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, empresas asociadas
+account G:Deterioro:6992                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, otras partes vinculadas
+account G:Deterioro:6993                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, otras empresas
+account I                                                                ; type: R, desc: ventas e ingresos
+account I:Ventas:70                                                      ; type: R, desc: ventas de mercaderias, de produccion propia, de servicios, etc
+account I:Ventas:700-Mercaderias                                         ; type: R, desc: ventas de mercaderias
+account I:Ventas:701-ProductosTerminados                                 ; type: R, desc: ventas de productos terminados
+account I:Ventas:702-ProductosSemiterminados                             ; type: R, desc: ventas de productos semiterminados
+account I:Ventas:703-SubproductosYResiduos                               ; type: R, desc: ventas de subproductos y residuos
+account I:Ventas:704-EnvasesYEmbalajes                                   ; type: R, desc: ventas de envases y embalajes
+account I:Ventas:705-PrestacionesServicios                               ; type: R, desc: prestaciones de servicios
+account I:Ventas:706                                                     ; type: R, desc: descuentos sobre ventas por pronto pago
+account I:Ventas:7060                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de mercaderias
+account I:Ventas:7061                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de productos terminados
+account I:Ventas:7062                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de productos semiterminados
+account I:Ventas:7063                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de subproductos y residuos
+account I:Ventas:708                                                     ; type: R, desc: devoluciones de ventas y operaciones similares
+account I:Ventas:7080-DevolucionesVentasMercaderias                      ; type: R, desc: devoluciones de ventas de mercaderias
+account I:Ventas:7081                                                    ; type: R, desc: devoluciones de ventas de productos terminados
+account I:Ventas:7082                                                    ; type: R, desc: devoluciones de ventas de productos semiterminados
+account I:Ventas:7083                                                    ; type: R, desc: devoluciones de ventas de subproductos y residuos
+account I:Ventas:7084                                                    ; type: R, desc: devoluciones de ventas de envases y embalajes
+account I:Ventas:709-RappelsSobreVentas                                  ; type: R, desc: <<rappels>> sobre ventas
+account I:Ventas:7090-RappelsSobreVentasMercaderias                      ; type: R, desc: <<rappels>> sobre ventas de mercaderias
+account I:Ventas:7091                                                    ; type: R, desc: <<rappels>> sobre ventas de productos terminados
+account I:Ventas:7092                                                    ; type: R, desc: <<rappels>> sobre ventas de productos semiterminados
+account I:Ventas:7093                                                    ; type: R, desc: <<rappels>> sobre ventas de subproductos y residuos
+account I:Ventas:7094                                                    ; type: R, desc: <<rappels>> sobre ventas de envases y embalajes
+account I:VariacionExistencias:71                                        ; type: R, desc: variacion de existencias
+account I:VariacionExistencias:710                                       ; type: R, desc: variacion de existencias de productos en curso
+account I:VariacionExistencias:711                                       ; type: R, desc: variacion de existencias de productos semiterminados
+account I:VariacionExistencias:712                                       ; type: R, desc: variacion de existencias de productos terminados
+account I:VariacionExistencias:713                                       ; type: R, desc: variacion de existencias de subproductos, residuos y materiales recuperados
+account I:TrabajosRealizadosParaLaEmpresa:73                             ; type: R, desc: trabajos realizados para la empresa
+account I:TrabajosRealizadosParaLaEmpresa:730                            ; type: R, desc: trabajos realizados para el inmovilizado intangible
+account I:TrabajosRealizadosParaLaEmpresa:731                            ; type: R, desc: trabajos realizados para el inmovilizado material
+account I:TrabajosRealizadosParaLaEmpresa:732-TrabajosRealizadosEnInversionesInmob     ; type: R, desc: trabajos realizados en inversiones inmobiliarias
+account I:TrabajosRealizadosParaLaEmpresa:733                            ; type: R, desc: trabajos realizados para el inmovilizado material en curso
+account I:Subvenciones:74                                                ; type: R, desc: subvenciones, donaciones y legados
+account I:Subvenciones:740                                               ; type: R, desc: subvenciones, donaciones y legados a la explotacion
+account I:Subvenciones:746                                               ; type: R, desc: subvenciones, donaciones y legados de capital transferidos al resultado del ejercicio
+account I:Subvenciones:747                                               ; type: R, desc: otras subvenciones, donaciones y legados transferidos al resultado del ejercicio
+account I:OtrosIngresosGestion:75                                        ; type: R, desc: otros ingresos de gestion
+account I:OtrosIngresosGestion:751-ResulOperacionesEnComun               ; type: R, desc: resultados de operaciones en comun
+account I:OtrosIngresosGestion:7510-PerdidaTransferida(gestor)           ; type: R, desc: perdida transferida (gestor)
+account I:OtrosIngresosGestion:7511                                      ; type: R, desc: beneficio atribuido (participe o asociado no gestor)
+account I:OtrosIngresosGestion:752-IngresosArrendamientos                ; type: R, desc: ingresos por arrendamientos
+account I:OtrosIngresosGestion:753                                       ; type: R, desc: ingresos de propiedad industrial cedida en explotacion
+account I:OtrosIngresosGestion:754-IngresosComisiones                    ; type: R, desc: ingresos por comisiones
+account I:OtrosIngresosGestion:755-IngresosServiciosAlPersonal           ; type: R, desc: ingresos por servicios al personal
+account I:OtrosIngresosGestion:759-IngresosServiciosDiversos             ; type: R, desc: ingresos por servicios diversos
+account I:IngresosFinancieros:76                                         ; type: R, desc: ingresos financieros
+account I:IngresosFinancieros:760                                        ; type: R, desc: ingresos de participaciones en instrumentos de patrimonio
+account I:IngresosFinancieros:7600                                       ; type: R, desc: ingresos de participaciones en instrumentos de patrimonio, empresas del grupo
+account I:IngresosFinancieros:7601                                       ; type: R, desc: ingresos de participaciones en instrumentos de patrimonio, empresas asociadas
+account I:IngresosFinancieros:7602                                       ; type: R, desc: ingresos de participaciones en instrumentos de patrimonio, otras partes vinculadas
+account I:IngresosFinancieros:7603                                       ; type: R, desc: ingresos de participaciones en instrumentos de patrimonio, otras empresas
+account I:IngresosFinancieros:761                                        ; type: R, desc: ingresos de valores representativos de deuda
+account I:IngresosFinancieros:7610                                       ; type: R, desc: ingresos de valores representativos de deuda, empresas del grupo
+account I:IngresosFinancieros:7611                                       ; type: R, desc: ingresos de valores representativos de deuda, empresas asociadas
+account I:IngresosFinancieros:7612                                       ; type: R, desc: ingresos de valores representativos de deuda, otras partes vinculadas
+account I:IngresosFinancieros:7613                                       ; type: R, desc: ingresos de valores representativos de deuda, otras empresas
+account I:IngresosFinancieros:762-IngresosCreditos                       ; type: R, desc: ingresos de creditos
+account I:IngresosFinancieros:7620                                       ; type: R, desc: ingresos de creditos a largo plazo
+account I:IngresosFinancieros:76200                                      ; type: R, desc: ingresos de creditos a largo plazo, empresas del grupo
+account I:IngresosFinancieros:76201                                      ; type: R, desc: ingresos de creditos a largo plazo, empresas asociadas
+account I:IngresosFinancieros:76202                                      ; type: R, desc: ingresos de creditos a largo plazo, otras partes vinculadas
+account I:IngresosFinancieros:76203                                      ; type: R, desc: ingresos de creditos a largo plazo, otras empresas
+account I:IngresosFinancieros:7621                                       ; type: R, desc: ingresos de creditos a corto plazo
+account I:IngresosFinancieros:76210                                      ; type: R, desc: ingresos de creditos a corto plazo, empresas del grupo
+account I:IngresosFinancieros:76211                                      ; type: R, desc: ingresos de creditos a corto plazo, empresas asociadas
+account I:IngresosFinancieros:76212                                      ; type: R, desc: ingresos de creditos a corto plazo, otras partes vinculadas
+account I:IngresosFinancieros:76213                                      ; type: R, desc: ingresos de creditos a corto plazo, otras empresas
+account I:IngresosFinancieros:763                                        ; type: R, desc: beneficios por valoracion de activos y pasivos financieros por su valor razonable
+account I:IngresosFinancieros:766                                        ; type: R, desc: beneficios en participaciones y valores representativos de deuda
+account I:IngresosFinancieros:7660                                       ; type: R, desc: beneficios en valores representativos de deuda a largo plazo, empresas del grupo
+account I:IngresosFinancieros:7661                                       ; type: R, desc: beneficios en valores representativos de deuda a largo plazo, empresas asociadas
+account I:IngresosFinancieros:7662                                       ; type: R, desc: beneficios en valores representativos de deuda a largo plazo, otras partes vinculadas
+account I:IngresosFinancieros:7663                                       ; type: R, desc: beneficios en participaciones y valores representativos de deuda a largo plazo, otras empresas
+account I:IngresosFinancieros:7665                                       ; type: R, desc: beneficios en participaciones y valores representativos de deuda a corto plazo, empresas del grupo
+account I:IngresosFinancieros:7666                                       ; type: R, desc: beneficios en participaciones y valores representativos de deuda a corto plazo, empresas asociadas
+account I:IngresosFinancieros:7667                                       ; type: R, desc: beneficios en valores representativos de deuda a corto plazo, otras partes vinculadas
+account I:IngresosFinancieros:7668                                       ; type: R, desc: beneficios en valores representativos de deuda a corto plazo, otras empresas
+account I:IngresosFinancieros:768-DiferenciasPositivasCambio             ; type: R, desc: diferencias positivas de cambio
+account I:IngresosFinancieros:769-OtrosIngresosFinancieros               ; type: R, desc: otros ingresos financieros
+account I:BeneficiosActivosNoCorrientes:77                               ; type: R, desc: beneficios procedentes de activos no corrientes e ingresos excepcionales
+account I:BeneficiosActivosNoCorrientes:770-BeneficiosInmIntang          ; type: R, desc: beneficios procedentes del inmovilizado intangible
+account I:BeneficiosActivosNoCorrientes:771-BeneficiosInmMaterial        ; type: R, desc: beneficios procedentes del inmovilizado material
+account I:BeneficiosActivosNoCorrientes:772                              ; type: R, desc: beneficios procedentes de las inversiones inmobiliarias
+account I:BeneficiosActivosNoCorrientes:773                              ; type: R, desc: beneficios procedentes de participaciones alargo plazo en partes vinculadas
+account I:BeneficiosActivosNoCorrientes:7733                             ; type: R, desc: beneficios procedentes de participaciones a largo plazo, empresas del grupo
+account I:BeneficiosActivosNoCorrientes:7734                             ; type: R, desc: beneficios procedentes de participaciones a largo plazo, empresas asociadas
+account I:BeneficiosActivosNoCorrientes:7735                             ; type: R, desc: beneficios procedentes de participaciones a largo plazo, otras partes vinculadas
+account I:BeneficiosActivosNoCorrientes:775                              ; type: R, desc: beneficios por operaciones con obligaciones propias
+account I:BeneficiosActivosNoCorrientes:778-IngresosExcepcionales        ; type: R, desc: ingresos excepcionales
+account I:Misc:79                                                        ; type: R, desc: excesos y aplicaciones de provisiones y de perdidas por deterioro
+account I:Misc:790                                                       ; type: R, desc: reversion del deterioro del inmovilizado intangible
+account I:Misc:791                                                       ; type: R, desc: reversion del deterioro del inmovilizado material
+account I:Misc:792                                                       ; type: R, desc: reversion del deterioro de las inversiones inmobiliarias
+account I:Misc:793-ReversionDelDeterioroExistencias                      ; type: R, desc: reversion del deterioro de existencias
+account I:Misc:7930                                                      ; type: R, desc: reversion del deterioro de productos terminados y en curso de fabricacion
+account I:Misc:7931-ReversionDelDeterioroMercaderias                     ; type: R, desc: reversion del deterioro de mercaderias
+account I:Misc:7932                                                      ; type: R, desc: reversion del deterioro de materias primas
+account I:Misc:7933                                                      ; type: R, desc: reversion del deterioro de otros aprovisionamientos
+account I:Misc:794                                                       ; type: R, desc: reversion del deterioro de creditos por operaciones comerciales
+account I:Misc:795-ExcesoProvis                                          ; type: R, desc: exceso de provisiones
+account I:Misc:7951-ExcesoProvisParaImpuestos                            ; type: R, desc: exceso de provision para impuestos
+account I:Misc:7952                                                      ; type: R, desc: exceso de provision para otras responsabilidades
+account I:Misc:7954                                                      ; type: R, desc: exceso de provision por operaciones comerciales
+account I:Misc:79544                                                     ; type: R, desc: exceso de provision por contratos onerosos
+account I:Misc:79549                                                     ; type: R, desc: exceso de provision para otras operaciones comerciales
+account I:Misc:7955                                                      ; type: R, desc: exceso de provision para actuaciones medioambientales
+account I:Misc:796                                                       ; type: R, desc: reversion del deterioro de participaciones y valores representativos de deuda a largo plazo
+account I:Misc:7960                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas del grupo
+account I:Misc:7961                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas asociadas
+account I:Misc:7962                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, otras partes vinculadas
+account I:Misc:7963                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, otras empresas
+account I:Misc:7965                                                      ; type: R, desc: reversion del deterioro de valores representativos de deuda a largo plazo, empresas del grupo
+account I:Misc:7966                                                      ; type: R, desc: reversion del deterioro de valores representativos de deuda a largo plazo, empresas asociadas
+account I:Misc:7967                                                      ; type: R, desc: reversion del deterioro de valores representativos de deuda a largo plazo, otras partes vinculadas
+account I:Misc:7968                                                      ; type: R, desc: reversion del deterioro de valores representativos de deuda a largo plazo, otras empresas
+account I:Misc:797                                                       ; type: R, desc: reversion del deterioro de creditos a largo plazo
+account I:Misc:7970                                                      ; type: R, desc: reversion del deterioro de creditos a largo plazo, empresas del grupo
+account I:Misc:7971                                                      ; type: R, desc: reversion del deterioro de creditos a largo plazo, empresas asociadas
+account I:Misc:7972                                                      ; type: R, desc: reversion del deterioro de creditos alargo plazo, otras partes vinculadas
+account I:Misc:7973                                                      ; type: R, desc: reversion del deterioro de creditos a largo plazo, otras empresas
+account I:Misc:798                                                       ; type: R, desc: reversion del deterioro de participaciones y valores representativos de deuda a corto plazo
+account I:Misc:7980                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas del grupo
+account I:Misc:7981                                                      ; type: R, desc: reversion del deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas asociadas
+account I:Misc:7985                                                      ; type: R, desc: reversion del deterioro en valores representativos de deuda a corto plazo, empresas del grupo
+account I:Misc:7986                                                      ; type: R, desc: reversion del deterioro en valores representativos de deuda a corto plazo, empresas asociadas
+account I:Misc:7987                                                      ; type: R, desc: reversion del deterioro en valores representativos de deuda a corto plazo, otras partes vinculadas
+account I:Misc:7988                                                      ; type: R, desc: reversion del deterioro en valores representativos de deuda a corto plazo, otras empresas
+account I:Misc:799                                                       ; type: R, desc: reversion del deterioro de creditos a corto plazo
+account I:Misc:7990                                                      ; type: R, desc: reversion del deterioro de creditos a corto plazo, empresas del grupo
+account I:Misc:7991                                                      ; type: R, desc: reversion del deterioro de creditos a corto plazo, empresas asociadas
+account I:Misc:7992                                                      ; type: R, desc: reversion del deterioro de creditos a corto plazo, otras partes vinculadas
+account I:Misc:7993                                                      ; type: R, desc: reversion del deterioro de creditos a corto plazo, otras empresas
