@@ -1,0 +1,77 @@
+#!/bin/sh -e
+##:
+#h: Usage: dsetup-dnie ...
+#h:
+#h: This script helps installing DNIe software in Debian.
+#h:
+#h: ... i-pkcs11    : Install pcsc, opensc and pkcs11.
+#h: ... i-javaws    : Install javaws via icedtea.
+#h: ... h-firefox   : Print help on how to enabe pkcs11 in firefox.
+#h: ... i-autofirma : Install autofirma program. 
+#h: ... t-valide    : Check DNI card works (autofirma).
+#h: ... t-idazki    : Check DNI card works (idazki).
+##:
+dsetup_dnie() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        i-pkcs11)    dsetup_pkcs11_install    ;;
+        i-javaws)    dsetup_javaws_install    ;;
+        h-firefox)   dsetup_firefox_dnie_help ;;
+        i-autofirma) dsetup_autofirma_install ;;
+        t-valide)    firefox 'https://valide.redsara.es/valide/' >/dev/null 2>&1 &;;
+        t-idazki)    firefox 'https://servicios.izenpe.com/herramientasFirma/mostrarTestEntornoDesktop.do' >/dev/null 2>&1 &;;
+        *)           echo >&2 "error: Invalid arguments: ${cmd}"; return 1;;
+    esac
+}
+dsetup_pkcs11_install() {
+    local pkgs=''
+    test -x "/usr/sbin/pcscd"                            || pkgs="${pkgs} libpcsclite1"
+    test -x "/usr/bin/pcsc_scan"                         || pkgs="${pkgs} pcsc-tools"
+    test -x "/usr/bin/opensc-tool"                       || pkgs="${pkgs} opensc"
+    test -e "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so" || pkgs="${pkgs} opensc-pkcs11"
+    test ! -n "${pkgs}" || sudo apt-get -y install ${pkgs}
+    ## XBPS: /usr/lib/opensc-pkcs11.so
+    ## XBPS: pcsclite libpcsclite pcsc-acsccid pcsc-ccid pcsc-tools pcsc-ccid-examples opensc
+    ## VOID: sudo rm -f /var/service/pcscd
+    ## VOID: sudo ln -s /etc/sv/pcscd /var/service/pcscd
+}
+dsetup_javaws_install() {
+    test -x "/usr/bin/javaws" || sudo apt-get -y install "icedtea-netx"
+    mxdg -an "javaws"
+}
+dsetup_firefox_dnie_help() {
+    echo "*************************************************************************"
+    echo "*  Install manually the DNI module in firefox                           *"
+    echo "*                                                                       *"
+    echo "*  [Preferences]->[Priv & sec]->[Devices & sec]                         *"
+    echo "*  [New module]: /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so"
+    echo "*                                                                       *"
+    echo "* + You may want to restart pcscd                                       *"
+    echo "* + Put 'enable_pinpad = false in /etc/opensc.conf'                     *"
+    echo "*   https://wiki.archlinux.org/title/User:Timofonic/DNIe_(Espa%C3%B1ol) *"
+    echo "*************************************************************************"
+}
+dsetup_autofirma_install() {
+    local u="https://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux_Debian.zip"
+    local d="${TEMP:-/tmp}"
+    local z="${d}/$(basename "${u}")"
+    if test ! -e /usr/bin/autofirma; then
+        if test ! -e "${z}"; then
+            wget \
+                -e robots=off \
+                --user-agent="Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0" \
+                -O "${z}.tmp" \
+                "${u}"
+            mv -v "${z}.tmp" "${z}"
+        fi
+        unzip -o "${z}" -d "${d}"
+        sudo apt-get --fix-broken install ${d}/AutoFirma_*.deb
+    fi
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"dsetup-dnie"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            dsetup_dnie "$@"; exit 0;;
+    esac
+fi
