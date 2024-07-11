@@ -1,0 +1,26 @@
+#!/bin/sh -e
+##:
+#h: Usage: txtc-303 FILE
+#h:
+#h: Match with "Hacienda 303" presentations in spanish.
+##:
+txtc_303() {
+    local file="${1}" year quar date
+    if ! grep -q '^ *Modelo 303 *$' "${file}"; then
+        return 0
+    fi
+    year="$(sed -n 's|.*Ejercicio  *\(20..\).*|\1|p' "${file}" | head -n 1)"
+    quar="$(sed -n 's|.*Período  *\([0-9]\)T.*|\1|p' "${file}" | head -n 1)"
+    date="$(sed -n 's|.*Presentación realizada el:  *\(..\)-\(..\)-\(20..\).*|\3-\2-\1|p' "${file}" | head -n 1)"
+    test -n "${year}"
+    test -n "${quar}"
+    test -n "${date}"
+    printf 'hacienda_303_Y%sT%s__%s\n' "${year}" "${quar}" "${date}"
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"txtc-303"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            txtc_303 "$@"; exit 0;;
+    esac
+fi

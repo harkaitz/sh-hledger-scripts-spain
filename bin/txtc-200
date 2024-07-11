@@ -1,0 +1,23 @@
+#!/bin/sh -e
+##:
+#h: Usage: txtc-200 FILE
+#h:
+#h: Match with "Hacienda 200" presentations in spanish.
+##:
+txtc_200() {
+    local file="${1}" year quar date
+    if ! grep -q '^ *Modelo 200 *$' "${file}"; then
+        return 0
+    fi
+    year="$(sed -n 's|.*Ejercicio [ \.]*\(20..\).*|\1|p' "${file}" | head -n 1)"
+    date="$(sed -n 's|.*Presentación realizada el:  *\(..\)-\(..\)-\(20..\).*|\3-\2-\1|p' "${file}" | head -n 1)"
+    test -n "${year}"
+    test -n "${date}"
+    printf 'hacienda_200_Y%sT0__%s\n' "${year}" "${date}"
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"txtc-200"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            txtc_200 "$@"; exit 0;;
+    esac
+fi
