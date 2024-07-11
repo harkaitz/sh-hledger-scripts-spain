@@ -292,18 +292,18 @@ account P:Proveedores:Clientes:435                                       ; type:
 account P:Proveedores:Clientes:436-DudosoCobro                           ; type: L, desc: clientes de dudoso cobro
 account P:Proveedores:Clientes:437                                       ; type: L, desc: envases y embalajes a devolver por clientes
 account P:Proveedores:Clientes:438-AnticiposClientes                     ; type: L, desc: anticipos de clientes
-account P:Proveedores:DeudoresVarios:44                                  ; type: L, desc: deudores varios
-account P:Proveedores:DeudoresVarios:440-Deudores                        ; type: L, desc: deudores
-account P:Proveedores:DeudoresVarios:4400-DeudoresEuros                  ; type: L, desc: deudores (euros)
-account P:Proveedores:DeudoresVarios:4404-DeudoresMonedaExtranjera       ; type: L, desc: deudores (moneda extranjera)
-account P:Proveedores:DeudoresVarios:4409-Deudores                       ; type: L, desc: deudores, facturas pendientes de formalizar
-account P:Proveedores:DeudoresVarios:441-Deudores                        ; type: L, desc: deudores, efectos comerciales a cobrar
-account P:Proveedores:DeudoresVarios:4410-Deudores                       ; type: L, desc: deudores, efectos comerciales en cartera
-account P:Proveedores:DeudoresVarios:4411-Deudores                       ; type: L, desc: deudores, efectos comerciales descontados
-account P:Proveedores:DeudoresVarios:4412                                ; type: L, desc: deudores, efectos comerciales en gestion de cobro
-account P:Proveedores:DeudoresVarios:4415-Deudores                       ; type: L, desc: deudores, efectos comerciales impagados
-account P:Proveedores:DeudoresVarios:446-DeudoresDudosoCobro             ; type: L, desc: deudores de dudoso cobro
-account P:Proveedores:DeudoresVarios:449-DeudoresOperacionesEnComun      ; type: L, desc: deudores por operaciones en comun
+account A:NoCorriente:DeudoresVarios:44                                  ; type: A, desc: deudores varios
+account A:NoCorriente:DeudoresVarios:440-Deudores                        ; type: A, desc: deudores
+account A:NoCorriente:DeudoresVarios:4400-DeudoresEuros                  ; type: A, desc: deudores (euros)
+account A:NoCorriente:DeudoresVarios:4404-DeudoresMonedaExtranjera       ; type: A, desc: deudores (moneda extranjera)
+account A:NoCorriente:DeudoresVarios:4409-Deudores                       ; type: A, desc: deudores, facturas pendientes de formalizar
+account A:NoCorriente:DeudoresVarios:441-Deudores                        ; type: A, desc: deudores, efectos comerciales a cobrar
+account A:NoCorriente:DeudoresVarios:4410-Deudores                       ; type: A, desc: deudores, efectos comerciales en cartera
+account A:NoCorriente:DeudoresVarios:4411-Deudores                       ; type: A, desc: deudores, efectos comerciales descontados
+account A:NoCorriente:DeudoresVarios:4412                                ; type: A, desc: deudores, efectos comerciales en gestion de cobro
+account A:NoCorriente:DeudoresVarios:4415-Deudores                       ; type: A, desc: deudores, efectos comerciales impagados
+account A:NoCorriente:DeudoresVarios:446-DeudoresDudosoCobro             ; type: A, desc: deudores de dudoso cobro
+account A:NoCorriente:DeudoresVarios:449-DeudoresOperacionesEnComun      ; type: A, desc: deudores por operaciones en comun
 account P:Proveedores:Personal:46                                        ; type: L, desc: personal
 account P:Proveedores:Personal:460-AnticiposRemuneraciones               ; type: L, desc: anticipos de remuneraciones
 account P:Proveedores:Personal:465-RemuneracionesPendPago                ; type: L, desc: remuneraciones pendientes de pago
@@ -315,10 +315,10 @@ account P:Proveedores:AdminPubl:4709                                     ; type:
 account P:Proveedores:AdminPubl:471                                      ; type: L, desc: organismos de la seguridad social, deudores
 account P:Proveedores:AdminPubl:472-HaciendaPubl                         ; type: L, desc: hacienda publica, iva soportado
 account P:Proveedores:AdminPubl:473                                      ; type: L, desc: hacienda publica, retenciones y pagos a cuenta
-account P:Proveedores:AdminPubl:474-ActivosImpuestoDiferido              ; type: L, desc: activos por impuesto diferido
-account P:Proveedores:AdminPubl:4740-ActivosDiferenciasTemporariasDeducibles     ; type: L, desc: activos por diferencias temporarias deducibles
-account P:Proveedores:AdminPubl:4742                                     ; type: L, desc: derechos por deducciones y bonificaciones pendientes de aplicar
-account P:Proveedores:AdminPubl:4745                                     ; type: L, desc: credito por perdidas a compensar del ejercicio
+account A:NoCorriente:AdminPubl:474-ActivosImpuestoDiferido              ; type: A, desc: activos por impuesto diferido
+account A:NoCorriente:AdminPubl:4740-ActivosDiferenciasTemporariasDeducibles     ; type: A, desc: activos por diferencias temporarias deducibles
+account A:NoCorriente:AdminPubl:4742                                     ; type: A, desc: derechos por deducciones y bonificaciones pendientes de aplicar
+account A:NoCorriente:AdminPubl:4745                                     ; type: A, desc: credito por perdidas a compensar del ejercicio
 account P:Proveedores:AdminPubl:475                                      ; type: L, desc: hacienda publica, acreedora por conceptos fiscales
 account P:Proveedores:AdminPubl:4750-HaciendaPubl                        ; type: L, desc: hacienda publica, acreedora por iva
 account P:Proveedores:AdminPubl:4751                                     ; type: L, desc: hacienda publica, acreedora por retenciones practicadas

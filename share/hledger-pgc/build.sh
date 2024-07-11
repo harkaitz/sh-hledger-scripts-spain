@@ -80,6 +80,7 @@ build_sh() {
             14*|16*|17*|18*)         type='L'         group='P:NoCorriente';;
             15*|19*|50*|51*|52*|56*) type='L'         group='P:Corriente';;
             57*)                     type='C'         group='A:Corriente';;
+            474*|44*)                type='A'         group='A:NoCorriente';;
             *)                       type="${g_type}" group="${g_group}";;
         esac
         
