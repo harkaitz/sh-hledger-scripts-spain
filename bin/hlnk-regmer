@@ -1,0 +1,40 @@
+#!/bin/sh -e
+##:
+#h: Usage: hlnk-regmer ...
+#h:
+#h: Enlaces al Registro Mercantil.
+#h:
+#h: ... madrid-1 : [R.M. de Madrid]->[Impresos]->[Cuentas]
+#h: ... ca ...   : Enlaces para la confección de las cuentas anuales.
+##:
+hlnk_regmer() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        madrid-1) firefox 'https://www.rmercantilmadrid.com/rmm/Impresos/General.aspx?Type=1&Cat=5';;
+        ca)       hlnk_regmer_ca "$@";;
+        *)        echo >&2 "error: Argumento invalido: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+hlnk_regmer_ca() {
+    local examples="$(dirname "$0")/../share/pgc/examples"
+    if test ! -n "$1"; then
+        cat <<-EOF
+	... ej1 : Ejemplo de cuentas anuales abreviadas de Sorlinda Investments S.L.
+	EOF
+        return 0
+    fi
+    case "$1" in
+        ej1) xdg-open "${examples}/cuentas_anuales/do-cuentas-anuales-abreviadas-de-sorlinda-investments-sl-unipersonal-ejercicio-2018.pdf";;
+        *)   echo >&2 "error: Argumento invalido: $1"; return 1;;
+    esac
+    
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hlnk-regmer"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hlnk_regmer "$@"; exit 0;;
+    esac
+fi
