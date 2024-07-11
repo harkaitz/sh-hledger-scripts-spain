@@ -1,0 +1,90 @@
+#!/bin/sh -e
+##:
+#h: Usage: hlnk-aeat-sl ...
+#h:
+#h: Enlaces y ayuda a la AEAT (Agencia Tributaria).
+#h:
+#h: ... ayuda ...     : Blogs de ayuda y información.
+#h: ... terminos ...  : Ayuda sobre los terminos.
+#h: ... area-personal : Para consulta de notif. y datos censales.
+#h: ... 036           : Alta/baja de actividad, NIF definitivo.
+#h: ... 036-ayuda1    : Instrucciones de como rellenar 036.
+#h: ... 036-ayuda2    : Instrucciones de como rellenar 036.
+#h: ... 303           : Declaración del IVA.
+#h: ... 303-retraso   : Declaración del IVA con retraso.
+#h: ... 303-ayuda-2   : Instrucciones para rellenarlo.
+#h: ... 200           : Rellenar modelo 200.
+#h: ... 200-ayuda-f   : Información sobre las casillas.
+#h: ... 200-manual    : Abre el manual.
+##:
+hlnk_aeat_sl() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        ayuda)         hlnk_aeat_sl_ayuda    "$@";;
+        terminos)      hlnk_aeat_sl_terminos "$@";;
+        area-personal) firefox  "https://sede.agenciatributaria.gob.es/Sede/mi-area-personal.html";;
+        036)           firefox  "https://sede.agenciatributaria.gob.es/Sede/tramitacion/G322.shtml";;
+        036-ayuda1)    xdg-open "https://sede.agenciatributaria.gob.es/static_files/Sede/Procedimiento_ayuda/G322/Guia_censal.pdf";;
+        036-ayuda2)    xdg-open "https://sede.agenciatributaria.gob.es/static_files/Sede/Procedimiento_ayuda/G322/instr_mod036.pdf";;
+        303)           firefox  "https://sede.agenciatributaria.gob.es/Sede/iva/presentar-declaracion-iva-modelo-303.html";;
+        303-retraso)   firefox  "https://sede.agenciatributaria.gob.es/Sede/todas-gestiones/impuestos-tasas/iva/modelo-303-iva-autoliquidacion_/presentacion-2022.html";;
+        303-ayuda-2)   xdg-open "https://www.holded.com/es/blog/modelo-303-instrucciones-rellenarlo";;
+        200)           firefox  "https://sede.agenciatributaria.gob.es/Sede/procedimientoini/GE04.shtml";;
+        200-ayuda-f)   xdg-open "https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-ayuda-presentacion/modelo-200-2018/01-sociedades-web.html";;
+        200-manual)    xdg-open "https://sede.agenciatributaria.gob.es/static_files/Sede/Biblioteca/Manual/Practicos/Sociedades/Manual_sociedades_2022.pdf";;
+        *)             echo >&2 "error: Argumento invalido: ${cmd}"; return 1;;
+    esac
+}
+ ## ------------------------------------------------------------------
+hlnk_aeat_sl_ayuda() {
+    if test ! -n "$1"; then
+        cat <<-EOF
+	... 1  : NIF Provisional y definitivo
+	... 2  : Autonomo y trabajar (*).
+	... 3  : Facturar sin ser autonomo (*).
+	... 4  : Hacerse autonomo.
+	... 5  : Dar de baja una sociedad.
+	... 6  : IVA, funcionamiento.
+	... 7  : Obligaciones sociedades inactivas.
+	... 8  : Ayuda 200 impuesto de sociedades.
+	... 9  : Gipuzkoa y 036.
+	... 10 : Lista de documentos necesarios para NIF.
+	EOF
+        return 0
+    fi
+    case "$1" in
+        1)  xdg-open "https://www.antaconsulting.es/blog/como-solicitar-cif-definitivo-y-provisional/";;
+        2)  xdg-open "https://ayudatpymes.com/gestron/se-puede-ser-autonomo-y-trabajar-por-cuenta-ajena-a-la-vez/";;
+        3)  xdg-open "https://www.infoautonomos.com/facturas/facturar-sin-ser-autonomo/";;
+        4)  xdg-open "https://revista.seg-social.es/-/5-pasos-para-darse-de-alta-como-aut%C3%B3nomo";;
+        5)  xdg-open "https://www.infoautonomos.com/tipos-de-sociedades/dar-de-baja-una-sociedad/";;
+        6)  xdg-open "https://www.infoautonomos.com/fiscalidad/iva/";;
+        7)  xdg-open "https://www.infoautonomos.com/tipos-de-sociedades/obligaciones-sociedades-inactivas/";;
+        8)  xdg-open "https://getquipu.com/blog/presentar-modelo-200-impuesto-de-sociedades/";;
+        9)  xdg-open "https://www.gipuzkoa.eus/documents/2456431/49503299/Preguntas+Frecuentes.pdf/c5db47b9-450c-f5a2-7da2-cc00a4330794";;
+        10) xdg-open "https://www.bizkaia.eus/es/tema-detalle/-/edukia/dt/6123#b";;
+        *)  echo >&2 "error: Argumento invalido: $1"; return 1;;
+    esac
+}
+hlnk_aeat_sl_terminos() {
+    if test ! -n "$1"; then
+        cat <<-EOF
+	... 1 : Representante vs apoderado.
+	... 2 : Fechas en español.
+	EOF
+        return 0
+    fi
+    case "$1" in
+        1) xdg-open "https://gonzalezpequeno.com/blog/t91-representante-y-apoderado-legal/";;
+        2) xdg-open "https://progrespagnol.com/blog/la-fecha-y-la-hora-en-espanol/";;
+        *) echo >&2 "error: Argumento invalido: $1"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hlnk-aeat-sl"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hlnk_aeat_sl "$@"; exit 0;;
+    esac
+fi

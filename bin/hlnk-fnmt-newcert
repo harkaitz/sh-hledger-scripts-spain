@@ -1,0 +1,30 @@
+#!/bin/sh -e
+##:
+#h: Usage: hlnk-fnmt-newcert ...
+#h:
+#h: Enlaces a FNMT (Fabrica Nacional de Moneda y Timbre).
+#h:
+#h: ... nuevo-ayuda : Ayuda para la creación de nuevos certificados.
+#h: ... nuevo       : Empieza a crear un nuevo certificado.
+#h: ... descarga    : Descargar un nuevo certificado.
+##:
+hlnk_fnmt_newcert() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        nuevo-ayuda)  xdg-open 'https://www.sede.fnmt.gob.es/certificados/certificado-de-representante/administrador-unico-solidario/configuracion-previa';;
+        nuevo)        firefox 'https://www.sede.fnmt.gob.es/certificados/certificado-de-representante/administrador-unico-solidario/solicitar-certificado';;
+        descarga)     firefox 'https://www.sede.fnmt.gob.es/certificados/certificado-de-representante/administrador-unico-solidario/descargar-certificado';;
+        *)            echo >&2 "error: Argumento invalido: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hlnk-fnmt-newcert"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#[hH]: \{0,1\}//p' "$0";;
+        *)            hlnk_fnmt_newcert "$@"; exit 0;;
+    esac
+fi
+
+
+

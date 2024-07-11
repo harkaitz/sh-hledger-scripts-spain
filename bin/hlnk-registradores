@@ -1,0 +1,27 @@
+#!/bin/sh -e
+##:
+#h: Usage: hlnk-registradores ...
+#h:
+#h: Enlaces y referencias a "sede.registradores.org".
+#h:
+#h: ... carpeta : [Registradores.org]->[Mi carpeta]
+#h: ... doc     : Pagina de documentación.
+#h: ... ptc     : Manual de ayuda de Presentación telemática de cuentas.
+##:
+hlnk_registradores() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        carpeta) firefox 'https://sede.registradores.org/sede/sede-corpme-web/mi-carpeta' ;;
+        doc)     firefox 'https://www.registradores.org/navegacion-por-categorias/-/asset_publisher/eXXttUcwzL5U/content/gener-1';;
+        ptc)     firefox 'https://www.registradores.org/documents/33383/147535/ManualayudaPresentelecuentas.pdf';;
+        *)       echo >&2 "error: Argumento invalido: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hlnk-registradores"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hlnk_registradores "$@"; exit 0;;
+    esac
+fi
