@@ -1,0 +1,26 @@
+#!/bin/sh -e
+##:
+#h: Usage: htodo-regm-ca
+#h:
+#h: Dates for "Cuentas Anuales" presentation.
+#h:
+#h: Environment variables: HTODO_START_YEAR, HTODO_END_YEAR
+##:
+htodo_regm_ca() {
+    local year_s="${HTODO_START_YEAR:-$(date +%Y)}"
+    local year_e="${HTODO_END_YEAR:-$(date +%Y)}"
+    local year ds de
+    for year in $(seq "${year_s}" "${year_e}"); do
+        ds="$(date --date "Jul 1  ${year}" '+%Y-%m-%d')"
+        de="$(date --date "Jul 30 ${year}" '+%Y-%m-%d')"
+        cat <<-EOF
+	@REGM-CA-$(( ${year} - 1)) ${ds} ${de} Cuentas anuales
+	EOF
+    done
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"htodo-regm-ca"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         htodo_regm_ca "$@"; exit 0;;
+    esac
+fi

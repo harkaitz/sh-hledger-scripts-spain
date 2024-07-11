@@ -1,0 +1,35 @@
+#!/bin/sh -e
+##:
+#h: Usage: htodo-aeat-303
+#h:
+#h: TODO list for AEAT paperwork.
+#h:
+#h: Environment variables: HTODO_START_YEAR, HTODO_END_YEAR
+##:
+htodo_aeat_303() {
+    local year_s="${HTODO_START_YEAR:-$(date +%Y)}"
+    local year_e="${HTODO_END_YEAR:-$(date +%Y)}"
+    local year d1s d1e d2s d2e d3s d3e d4s d4e
+    for year in $(seq "${year_s}" "${year_e}"); do
+        d1s="$(date --date "Apr 1  ${year}" '+%Y-%m-%d')"
+        d1e="$(date --date "Apr 20 ${year}" '+%Y-%m-%d')"
+        d2s="$(date --date "Jul 1  ${year}" '+%Y-%m-%d')"
+        d2e="$(date --date "Jul 20 ${year}" '+%Y-%m-%d')"
+        d3s="$(date --date "Oct 1  ${year}" '+%Y-%m-%d')"
+        d3e="$(date --date "Oct 20 ${year}" '+%Y-%m-%d')"
+        d4s="$(date --date "Jan 1  $((${year} + 1))" '+%Y-%m-%d')"
+        d4e="$(date --date "Jan 20 $((${year} + 1))" '+%Y-%m-%d')"
+        cat <<-EOF
+	@IVA-${year}-1 ${d1s} ${d1e} IVA declaration - Model 303.
+	@IVA-${year}-2 ${d2s} ${d2e} IVA declaration - Model 303.
+	@IVA-${year}-3 ${d3s} ${d3e} IVA declaration - Model 303.
+	@IVA-${year}-4 ${d4s} ${d4e} IVA declaration - Model 303.
+	EOF
+    done
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"htodo-aeat-303"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         htodo_aeat_303 "$@"; exit 0;;
+    esac
+fi

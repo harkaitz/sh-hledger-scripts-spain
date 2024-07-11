@@ -1,0 +1,25 @@
+#!/bin/sh -e
+##:
+#h: Usage: htodo-aeat-200
+#h:
+#h: Dates for AEAT 200 model presentation.
+#h:
+#h: Environment variables: HTODO_START_YEAR, HTODO_END_YEAR
+htodo_aeat_200() {
+    local year_s="${HTODO_START_YEAR:-$(date +%Y)}"
+    local year_e="${HTODO_END_YEAR:-$(date +%Y)}"
+    local year ds de
+    for year in $(seq "${year_s}" "${year_e}"); do
+        ds="$(date --date "Jul 1  ${year}" '+%Y-%m-%d')"
+        de="$(date --date "Jul 25 ${year}" '+%Y-%m-%d')"
+        cat <<-EOF
+	@200-$(( ${year} - 1)) ${ds} ${de} Impuesto Sociedades - Model 200.
+	EOF
+    done
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"htodo-aeat-200"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         htodo_aeat_200 "$@"; exit 0;;
+    esac
+fi
