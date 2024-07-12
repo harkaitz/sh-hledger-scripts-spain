@@ -1,0 +1,248 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-200 ...
+#h:
+#h: ... pag1  : Caracteres de la declaracion. ... pag18: Deducciones.
+#h: ... pag2  : Identificación.               ... pag19,20,21 : Limitación en la deducibilidad. 
+#h: ... pag3  : Administradores.              ... pag22: Aplicación de resultados.
+#h: ... pag4  : Participaciones.              ... pag23: Deterioro creditos.
+#h: ... pag5  : Extranjero.                   ... pag24: Presentación de documentación
+#h: ... pag6  : Titularidad real.             ... pag25: Inversiones cinematográficas.
+#h: ... pag7  : Administradores.
+#h: ... pag8  : Activo - Inmovilizado material.
+#h: ... pag9  : Activo - Efectivo.
+#h: ... pag10 : Patrimonio Neto.
+#h: ... pag11 : Patrimonio Neto.
+#h: ... pag12,13,14,15,16 : Liquidación.
+#h: ... pag17 : Impuesto diferido.
+. hledger-info
+. hledger-get
+. hledger-es
+hledger_200() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        pag*) hledger_200_"${cmd}"       ;;
+        *)    echo >&2 "error: Argumento invalido: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+hledger_200_pag1() {
+    cat <<-EOF
+	--------------------------------------------------------------
+	---- Caracteres de la declaración ----------------------------
+	--------------------------------------------------------------
+	
+	-- Tipo de entidad --
+	Normalmente vacio
+	
+	-- Regímenes aplicables --
+	Normalmente vacio
+	
+	-- Otros caracteres --                 _
+	[00026] Entidad inactiva.               |--(Sin actividad)
+	[00027] Base imponible negativa o cero._|
+	
+	-- INCN del año previo --
+	INCN inferior a 20 millones de euros. (Importe Neto Cifra Negocios)
+	
+	-- Estados de cuentas --
+	Balance .............. : Mod. abreviado
+	Perdidas y ganancias . : Mod. abreviado
+	
+ 	-- Periodo impositivo
+	Fecha inicio del período impositivo . : 01/01/$(hledger_get year1)
+	Fecha fin del período impositivo .... : 31/12/$(hledger_get year1)
+	EOF
+}
+hledger_200_pag2() {
+    getinfo -c COMPANY_CNAE_CODE COMPANY_NIF
+    cat <<-EOF
+	IDENTIFICACIÓN
+	==============
+	
+	## Identificación
+	
+	Código CNAE (2009) actividad principal : $(getinfo -g COMPANY_CNAE_CODE=s)
+	NIF .................................. : $(getinfo -g COMPANY_NIF=s)
+	Razón social ......................... : $(getinfo -g COMPANY_SOCIAL_DENOMINATION=s)
+	Teléfono 1 ........................... : $(getinfo -g COMPANY_PHONE1)
+	Teléfono 2 ........................... : $(getinfo -g COMPANY_PHONE2)
+	
+	## Autoliquidación complementaria
+	Normalmente vacio
+	
+	## Grupo fiscal
+	Normalmente vacio
+	
+	## Grupo mercantil
+	Normalmente vacio
+	
+	##Personal asalariado
+	Normalmente vacio
+	EOF
+}
+hledger_200_pag3() {
+    cat <<-EOF
+	Relación de administradores
+	===========================
+	
+	$(getinfo -G COMPANY_ADMINISTRATORS=s)
+	EOF
+}
+hledger_200_pag4() {
+    cat <<-EOF
+	Participaciones
+	===============
+	
+	## B.1. Participaciones de la declarante en otras entidades
+	Normalmente vacio
+	
+	## B.2. Participaciones de personas o entidades en la declarante
+	
+	$(getinfo -G COMPANY_OWNERS)
+	EOF
+}
+hledger_200_pag5() {
+    cat <<-EOF
+	## D. Información de detalle de establecimiento permanente que opere en el extranjero
+	Normalmente vacio
+	EOF
+}
+hledger_200_pag6() {
+    cat <<-EOF
+	## F. Identificación del titular real de la entidad
+	
+	Gente que tiene mas del 20% de las participaciones.
+	
+	$(getinfo -G COMPANY_OWNERS=s)
+	EOF
+}
+hledger_200_pag7() {
+    cat <<-EOF
+	#  G. Secretario del Consejo de Administración y representantes legales de la entidad
+	
+	Elige a uno para ser "Secretario del Consejo de Administración". Lista todos
+	como representantes legales.
+	
+	$(getinfo -G COMPANY_ADMINISTRATORS=s)
+	EOF
+}
+hledger_200_pag8() {
+    cat <<-EOF
+	Balance: Activo (I)
+	===================
+	
+	## Inmovilizado material
+	
+	$(hledger_es --end "$(hledger_get year1)-12-31" bal A:NoCorriente:InmMaterial: | sed 's|^|    |')
+	EOF
+}
+hledger_200_pag9() {
+    cat <<-EOF
+	Balance: Activo (II)
+	====================
+	
+	## Efectivo y otros activos líquidos equivalentes
+	
+	$(hledger_es --end "$(hledger_get year1)-12-31" bal A:Corriente:Tesoreria: | sed 's|^|    |')
+	EOF
+}
+hledger_200_pag10() {
+    cat <<-EOF
+	Balance: Patrimonio Neto y Pasivo (I)
+	=====================================
+	
+	## Capital escriturado
+	
+	$(hledger_es --end "$(hledger_get year1)-12-31" bal PN:Capital: | sed 's|^|    |')
+	
+	## Resultado del ejercicio
+	
+	$(hledger_es --yearly bse | sed 's|^|    |')
+	EOF
+}
+hledger_200_pag11() {
+    cat <<-EOF
+	Balance: Patrimonio Neto y Pasivo (II)
+	======================================
+	
+	$(hledger_es --yearly bse | sed 's|^|    |')
+	EOF
+}
+hledger_200_pag12() {
+    cat <<-EOF
+	Liquidación (I,II,II - Base imponible, III, IV)
+	===============
+	Vacio
+	EOF
+}
+hledger_200_pag13() { hledger_200_pag12; }
+hledger_200_pag14() { hledger_200_pag12; }
+hledger_200_pag15() { hledger_200_pag12; }
+hledger_200_pag16() { hledger_200_pag12; }
+hledger_200_pag17() {
+    cat <<-EOF
+	Conversión de activos por impuesto diferido en crédito exigible frente a la Administración tributaria (art. 130 LIS)
+	================
+	Vacio
+	EOF
+}
+hledger_200_pag18() {
+    cat <<-EOF
+	Deducciones I + D + i excluidas de límite. Opción del art. 39.2.LIS (**)
+	===
+	Vacio
+	EOF
+}
+hledger_200_pag19() {
+    cat <<-EOF
+	Limitación en la deducibilidad de gastos financieros. Art. 16 LIS (excluidos aquellos a que se refiere el art. 15 g), h) y 15 bis LIS)
+	=====================================
+	Vacio
+	
+	Limitación en la deducibilidad de gastos financieros. Gastos financieros pendientes de deducir
+	=====================================
+	
+	Pendiente de adición por límite beneficio operativo no aplicado
+	=====================================
+	EOF
+}
+hledger_200_pag20() { hledger_200_pag19; }
+hledger_200_pag21() { hledger_200_pag19; }
+hledger_200_pag22() {
+    cat <<-EOF
+	Aplicación de resultados
+	=========================
+	
+	## Perdidas y ganancias: 0 Cuando no hay ganancias
+	
+	$(hledger_es --yearly bse | sed 's|^|    |')
+	EOF
+}
+hledger_200_pag23() {
+    cat <<-EOF
+	Dotaciones por deterioro de créditos u otros activos derivados de las posibles insolvencias de los deudores no vinculados con el contribuyente y otras del art. 11.12 LIS con posibilidad de conversión en crédito exigible (**)
+	========================
+	EOF
+}
+hledger_200_pag24() {
+    cat <<-EOF
+	Presentación de documentación previa en la sede electrónica
+	========================
+	EOF
+}
+hledger_200_pag25() {
+    cat <<-EOF
+	Inversiones en producciones cinematográficas o series audiovisuales
+	====================================================================
+	Normalmente vacio
+	EOF
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-200"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hledger_200 "$@"; exit 0;;
+    esac
+fi
