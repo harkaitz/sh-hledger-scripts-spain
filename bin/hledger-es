@@ -1,0 +1,30 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-es LEDGER-ARGS
+#h:
+#h: Translate hledger output to the spanish language.
+##:
+hledger_es() {
+    local tmp="$(mktemp)"
+    if hledger "$@" > "${tmp}"; then
+        sed '
+            /^Ending balances /d
+            /^Balance Sheet/d
+            s|Assets |Activos|g
+            s|Liabilities|Pasivos    |g
+            s|Equity|PN    |g
+            s|Net:  |Total:|g
+            s|^|    |
+        ' "${tmp}"
+        rm -f "${tmp}"
+    else
+        rm -f "${tmp}"
+        return 1
+    fi
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-es"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hledger_es "$@"; exit 0;;
+    esac
+fi
