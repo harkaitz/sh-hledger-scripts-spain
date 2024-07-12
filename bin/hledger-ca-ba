@@ -1,0 +1,101 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-ca-ba
+#h:
+#h: Print "Cuentas Anuales - Balance de situación".
+#h:
+#h: Environment variables: DATE
+##:
+. hledger-get
+hledger_ca_ba() {
+    cat <<-EOF
+	                                                             _____
+	____________________________________________________________| BA1 |____________
+	
+	A) ACTIVO NO CORRIENTE ................................................: $(hledger_get A:NoCorriente)
+	
+	  I   - Inmovilizado intangible .......................................: $(hledger_get A:NoCorriente:InmIntang:)
+	  II  - Inmovilizado material .........................................: $(hledger_get A:NoCorriente:InmMaterial:)
+	  III - Invers. inmobiliarias .........................................: $(hledger_get A:NoCorriente:InversionesInmob:)
+	  IV  - Invers. en empresas del grupo y asociadas a largo plazo .......: $(hledger_get A:NoCorriente:InversLargoPartesVinc:)
+	  V   - Invers. financieras a largo plazo .............................: $(hledger_get A:NoCorriente:InversLargoPlazo:)
+	  VI  - Activos por impuesto diferido .................................: $(hledger_get A:NoCorriente:AdminPubl:474-ActivosImpuestoDiferido)
+	  VII - Deudores comerciales no corrientes ............................: $(hledger_get A:NoCorriente:DeudoresVarios:)
+	
+	B) ACTIVO CORRIENTE ...................................................: $(hledger_get A:Corriente)
+	
+	  I   - Activos no corrientes mantenidos para la venta ................: n
+	  II  - Existencias ...................................................: n
+	  III - Deudores comerciales y otras cuentas a cobrar .................: n
+	   1  - Clientes por ventas y prestaciones de servicios ...............: n
+	    a - Clientes por ventas y prestaciones de servicios a largo plazo .: n
+	    b - Clientes por ventas y prestaciones de servicios a corto plazo .: n
+	   2  - Accionistas (socios) por desembolsos exigidos .................: n
+	   3  - Otros deudores ................................................: n
+	  IV  - Inversiones en empresas del grupo y asociadas a corto plazo ...: n
+	  V   - Inversiones financieras a corto ...............................: n
+	  VI  - Periodificaciones a corto .....................................: n
+	  VII - Efectivo y otros activos liquidos equivalentes ................: $(hledger_get A:Corriente:Tesoreria)
+	
+	TOTAL ACTIVO (A + B): $(hledger_get A:NoCorriente A:Corriente)
+	                                                             _______
+	____________________________________________________________| BA2.1 |__________
+	
+	A) PATRIMONIO NETO .................................................... : $(hledger_get r PN:)
+	  A-1) Fondos propios ................................................. : $(hledger_get r PN:Capital:)
+	    I    - Capital .................................................... : $(hledger_get r PN:Capital:)
+	    I.1    - Capital escriturado ...................................... : $(hledger_get r PN:Capital:100-Social)
+	    I.2    - (Capital no exigido) ..................................... : n
+	    II   - Prima de emisión ........................................... : n
+	    III  - Reservas ................................................... : n
+	    III.1  - Reserva de capitalización ................................ : n
+	    III.2  - Otras reservas ........................................... : n
+	    IV   - (Acciones y participaciones en patrimonio propias) ......... : n
+	    V    - Resultados de ejercicios anteriores ........................ : n
+	    VI   - Otras aportaciones de socios ............................... : n
+	    VII  - Resultados del ejercicio ................................... : $(hledger_get r G: I:)
+	    VIII - (Dividendo a cuenta) ....................................... : n
+	    IX.  - Otros instrumentos de patrimonio neto ...................... : n
+	  A-2) Ajustes por cambios de valor ................................... : n
+	  A-3) Subvenciones, donaciones y legados recibidos ................... : n
+	
+	B) PASIVO NO CORRIENTE ................................................ : n
+	  I    - Provisiones a largo plazo .................................... : n
+	  II   - Deudas a largo plazo ......................................... : n
+	  II.1   - Deudas con entidades de crédito ............................ : n
+	  II.2   - Acreedores por arrendamiento financiero .................... : n
+	  II.3   - Otras deudas a largo plazo ................................. : n
+	  III  - Deudas con empresas del grupo y asociadas a largo plazo ...... : n
+	  IV   - Pasivos por impuesto diferido ................................ : n
+	  V    - Periodificaciones a largo plazo .............................. : n
+	  VI   - Acreedores comerciales no corrientes ......................... : n
+	  VII  - Deuda con caracteristicas especiales a largo plazo ........... : n
+	                                                             _______
+	____________________________________________________________| BA2.2 |_________
+	
+	C) PASIVO CORRIENTE
+	  I      - Pasivos vinc. con activos no corr. mantenidos para venta ... : n
+	  II     - Provisiones a corto plazo .................................. : n
+	  III    - Deudas a corto plazo ....................................... : n
+	  III.1    - Deudas con entidades de crédito .......................... : n
+	  III.2    - Acreedores por arrendamiento financiero .................. : n
+	  III.3    - Otras deudas a corto plazo ............................... : n
+	  IV     - Deudas con empresas del grupo y asociadas a corto plazo .... : n
+	  V      - Acreedores comerciales y otras cuentas a pagar ............. : n
+	  V.1      - Proveedores .............................................. : n
+	  V.1.a      - Proveedores a largo plazo .............................. : n
+	  V.1.b      - Proveedores a corto plazo .............................. : n
+	  V.2      - Otros acreedores ......................................... : n
+	  VI     - Periodificaciones a corto plazo ............................ : n
+	  VII    - Deuda con caracteristicas especiales a corto plazo ......... : n
+	
+	TOTAL PATRIMONIO NETO Y PASIVO (A + B + C) : $(hledger_get r PN: P: G: I:)
+	________________________________________________________________________________
+	EOF
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca-ba"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         hledger_ca_ba "$@"; exit 0;;
+    esac
+fi

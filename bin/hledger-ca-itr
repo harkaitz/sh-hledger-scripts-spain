@@ -1,0 +1,23 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-ca-itr
+#h:
+#h: Declaración de identificación del titular real.
+##:
+. hledger-info
+hledger_ca_itr() {
+    cat <<-EOF
+	DECLARACIÓN DE IDENTIFICACIÓN DEL TITULAR REAL
+	==============================================
+	
+	La sociedad requiere de ITR por no cotizar ..: $(getinfo -g COMPANY_REQUIRES_ITR=yn)
+	
+	$(getinfo -G COMPANY_OWNERS=s)
+	EOF
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca-itr"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         hledger_ca_itr "$@"; exit 0;;
+    esac
+fi

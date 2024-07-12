@@ -1,0 +1,50 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-ca ...
+#h:
+#h: ... ida1    : Datos Generales de Identificación - IDA1
+#h: ... ida2    : Datos Generales de Identificación - IDA2
+#h: ... itr     : Identificador del titular real.
+#h: ... ds3     : Documento sobre servicios a terceros.
+#h: ... bal     : Balance de Situación.
+#h: ... cpg     : Cuenta de Pérdidas y Ganancias.
+#h: ... dm      : Declaración Medioambiental.
+#h: ... mem ... : Memoria.
+#h: ... ma      : Modelo de Autocartera.
+#h: ... ip      : Instancia de presentación (ayuda).
+#h: ... chd     : Certificado huella digital (ayuda).
+#h:
+#h: Este programa ayuda en la confección de las cuentas anuales abreviadas
+#h: de una S.L. cuando se ha utilizado hledger(1) para la confección de las
+#h: cuentas.
+##:
+. hledger-ca-ida1
+. hledger-ca-ida2
+. hledger-ca-itr
+. hledger-ca-ba
+. hledger-ca-pg
+. hledger-ca-mem
+hledger_ca() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        ida1)   hledger_ca_ida1 "$@"          ;;
+        ida2)   hledger_ca_ida2 "$@"          ;;
+        itr)    hledger_ca_itr  "$@"          ;;
+        ds3)    echo "Normalmente NO, vacio"  ;;
+        bal)    hledger_ca_ba "$@"            ;;
+        cpg)    hledger_ca_pg "$@"            ;;
+        dm)     echo "NO existe ninguna partida de naturaleza medioambiental." ;;
+        mem)    hledger_ca_mem "$@"           ;;
+        ma)     echo "Normalmente vacio."     ;;
+        ip)     echo "Usar sistema de firma." ;;
+        *)      echo >&2 "error: Invalid argument: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hledger_ca "$@"; exit 0;;
+    esac
+fi

@@ -1,0 +1,57 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-info ...
+#h:
+#h: ... show : Show variable values.
+#h: ... help : Show variable documentation.
+#h:
+#h: Source this script to access company information.
+##:
+. getinfo
+hledger_info() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        show) getinfo -p all ;;
+        help) getinfo -s     ;;
+        *)    echo >&2 "error: Invalid argument: ${cmd}"; return 1;;
+    esac
+}
+## -------------------------------------------------------------------
+hledger_info_calc_variables() {
+    if test ! -n "${COMPANY_INFO_FILE}"; then
+        echo >&2 "error: COMPANY_INFO_FILE: Not defined."
+        return 1
+    fi
+    getinfo \
+        -l "${COMPANY_INFO_FILE}" \
+        -a                        \
+        COMPANY_INFO_FILE='Shell script info company information.'   \
+        `: hledger-ca-ida1 `                                         \
+        COMPANY_NIF='Fiscal Identification Number'                   \
+        COMPANY_LEGAL_FORM='Company type, can be SL'                 \
+        COMPANY_SOCIAL_DENOMINATION='The legal name of the company.' \
+        COMPANY_SOCIAL_ADDRESS='The legal social address.'           \
+        COMPANY_PHONE1='Contact phone number.'                       \
+        COMPANY_MAIL='admin@domain.com'                              \
+        COMPANY_CNAE_CODE='Can be 6201'                              \
+        `: hledger-ca-itr `                                          \
+        COMPANY_REQUIRES_ITR='"y" when in regulated market.'         \
+        COMPANY_OWNERS='List of associates with shares'              \
+        `: hledger-ca-mem `                                          \
+        COMPANY_FORMATION_DATE_ES='The formation date in spanish.'   \
+        COMPANY_FORMATION_STATE_ES='For example "España"'            \
+        COMPANY_STATUTES_ES='Company statutes.'                      \
+        COMPANY_CA_FIRST='Is it the first Annual Account Presentation?' \
+        COMPANY_CA_EXISTENCIAS='Existencias text to use.'            \
+        COMPANY_SOCIAL_CAPITAL_EUROS='The social capital in euros.'  \
+        COMPANY_NUMBER_OF_SHARES='The number of shares.'
+}
+## -------------------------------------------------------------------
+hledger_info_calc_variables
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-info"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hledger_info "$@"; exit 0;;
+    esac
+fi

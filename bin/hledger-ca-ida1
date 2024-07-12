@@ -1,0 +1,27 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-ca-ida1
+#h:
+#h: Printa información de la empresa.
+##:
+. hledger-info
+hledger_ca_ida1() {
+    cat <<-EOF
+	______________________________________________________________
+	
+	NIF ...................... : $(getinfo -g COMPANY_NIF=s)
+	Forma jurídica ........... : $(getinfo -g COMPANY_LEGAL_FORM=s)
+	Denominación social ...... : $(getinfo -g COMPANY_SOCIAL_DENOMINATION=s | tr '[:lower:]' '[:upper:]')
+	Domicilio social ......... : $(getinfo -g COMPANY_SOCIAL_ADDRESS=s)
+	Telefono ................. : $(getinfo -g COMPANY_PHONE1)
+	Correo electrónico ....... : $(getinfo -g COMPANY_MAIL=s)
+	Actividad, Código CNAE ... : $(getinfo -g COMPANY_CNAE_CODE=s)
+	______________________________________________________________
+	EOF
+}
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca-ida1"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         hledger_ca_ida1 "$@"; exit 0;;
+    esac
+fi

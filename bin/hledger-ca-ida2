@@ -1,0 +1,64 @@
+#!/bin/sh -e
+##:
+#h: Usage: hledger-ca-ida2
+#h:
+#h: Aplicación de resultados y período medio de pago a proveedores.
+##:
+. hledger-get
+hledger_ca_ida2() {
+    local tmp="/tmp/inc"
+    hledger \
+        -b "$(hledger_get year2)-01-01" \
+        -e "$(hledger_get year1)-12-31" \
+        --yearly \
+        incomestatement -O csv > "${tmp}"
+    y1="$(vcsv -n 1 'Account' < "${tmp}")" # 2022
+    y2="$(vcsv -n 2 'Account' < "${tmp}")" # 2023
+    net1="$(vcsv -n 1 'Net:' < "${tmp}" | tr -d '€')"
+    net2="$(vcsv -n 2 'Net:' < "${tmp}" | tr -d '€')"
+    cat <<-EOF
+	Aplicación de resultados y período medio de pago a proveedores
+	==============================================================
+	
+	## Base de reparto
+	                                                      $(COLS1 ${y2}   ${y1}   )
+	Saldo de la cuenta de pérdidas y ganancias .........: $(COLS2 ${net2} ${net1} )
+	Remanente ..........................................: $(COLS2 n       n       )
+	Reservas voluntarias ...............................: $(COLS2 n       n       )
+	Otras reservas de libre disposición ................: $(COLS2 n       n       )
+	TOTAL BASE DE REPARTO = TOTAL APLICACIÓN ...........: $(COLS2 ${net2} ${net1} )
+	
+	## Aplicación a
+	                                                      $(COLS1 ${y2}   ${y1}   )
+	Reserva legal ......................................: $(COLS2 n       n       )
+	Reservas especiales ................................: $(COLS2 n       n       )
+	Reservas voluntarias ...............................: $(COLS2 n       n       )
+	Dividendos .........................................: $(COLS2 n       n       )
+	Remanente y otros ..................................: $(COLS2 n       n       )
+	Compensación de pérdidas de ejercicios anteriores ..: $(COLS2 n       n       )
+	APLICACION = TOTAL BASE DE REPARTO .................: $(COLS2 n       n       )
+	
+	## INFORMACIÓN SOBRE EL PERIODO MEDIO DE PAGO A PROVEEDORES
+	                                                      $(COLS1 ${y2}   ${y1}   )
+	Periodo medio de pago a proveedores (días) .........: $(COLS2 n       n       )
+	
+	[n: No calculado]
+	EOF
+    return 0
+}
+## -------------------------------------------------------------------
+COLS1() {
+    printf '| %-10s ' "$@"
+    printf '|'
+}
+COLS2() {
+    printf '| %10s ' "$@"
+    printf '|'
+}
+## -------------------------------------------------------------------
+if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca-ida2"; then
+    case "${1}" in
+        -h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)         hledger_ca_ida2 "$@"; exit 0;;
+    esac
+fi
