@@ -9,7 +9,7 @@
 #h: https://www.plangeneralcontable.com/?tit=listado-de-contenidos&name=GeTia&contentId=mod_list&contGroupId=ctg_31
 ##:
 build_sh() {
-    local short g_group subgroup subgroup_n g_type type group
+    local short g_group subgroup subgroup_n g_type type group tags
     local account subgroup_candidate
     
     printf 'account %-60s     ; type: %s, desc: %s\n' "P:NoCorriente" "L" "pasivo no corriente"
@@ -84,13 +84,26 @@ build_sh() {
             *)                       type="${g_type}" group="${g_group}";;
         esac
         
+        ## PGC marks.
+        case "${number}" in
+            62*) tags="ca-pa-7: y, ca-pa-a: y";;
+            70*) tags="ca-pa-1: y, ca-pa-a: y, INCN: y";;
+            71*) tags="ca-pa-2: y, ca-pa-a: y";;
+            73*) tags="ca-pa-3: y, ca-pa-a: y";;
+            *)   tags="";;
+        esac
+        case "${number}" in
+            
+        esac
+        
+        
         ## Print lines.
         case "${method}" in
             @group)
-                printf 'account %-60s     ; type: %s, desc: %s\n' "${group}" "${type}" "${descr}"
+                printf 'account %-60s     ; type: %s, %sdesc: %s\n' "${group}" "${type}" "${tags:+${tags}, }" "${descr}"
                 ;;
             @subgroup)
-                printf 'account %-60s     ; type: %s, desc: %s\n' "${group}:${subgroup}:${subgroup_n}" "${type}" "${descr}"
+                printf 'account %-60s     ; type: %s, %sdesc: %s\n' "${group}:${subgroup}:${subgroup_n}" "${type}" "${tags:+${tags}, }" "${descr}"
                 ;;
             @account)
                 ##
@@ -107,7 +120,7 @@ build_sh() {
                     account="${account}:${number}"
                 fi
                 ##
-                printf 'account %-60s     ; type: %s, desc: %s\n' "${account}" "${type}" "${descr}"
+                printf 'account %-60s     ; type: %s, %sdesc: %s\n' "${account}" "${type}" "${tags:+${tags}, }" "${descr}"
                 ;;
             @*)
                 continue

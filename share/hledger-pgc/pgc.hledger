@@ -503,17 +503,17 @@ account G:VariacionExistencias:61                                        ; type:
 account G:VariacionExistencias:610-Mercaderias                           ; type: X, desc: variacion de existencias de mercaderias
 account G:VariacionExistencias:611                                       ; type: X, desc: variacion de existencias de materias primas
 account G:VariacionExistencias:612                                       ; type: X, desc: variacion de existencias de otros aprovisionamientos
-account G:ServiciosExteriores:62                                         ; type: X, desc: servicios exteriores
-account G:ServiciosExteriores:620                                        ; type: X, desc: gastos en investigacion y desarrollo del ejercicio
-account G:ServiciosExteriores:621-ArrendamientosYCanones                 ; type: X, desc: arrendamientos y canones
-account G:ServiciosExteriores:622-ReparacionesYConservacion              ; type: X, desc: reparaciones y conservacion
-account G:ServiciosExteriores:623-ServiciosProfesionalesIndependientes     ; type: X, desc: servicios de profesionales independientes
-account G:ServiciosExteriores:624-Transportes                            ; type: X, desc: transportes
-account G:ServiciosExteriores:625-PrimasSeguros                          ; type: X, desc: primas de seguros
-account G:ServiciosExteriores:626-ServiciosBancarios                     ; type: X, desc: servicios bancarios y similares
-account G:ServiciosExteriores:627-Publ                                   ; type: X, desc: publicidad, propaganda y relaciones publicas
-account G:ServiciosExteriores:628-Suministros                            ; type: X, desc: suministros
-account G:ServiciosExteriores:629-OtrosServicios                         ; type: X, desc: otros servicios
+account G:ServiciosExteriores:62                                         ; type: X, ca-pa-7: y, ca-pa-a: y, desc: servicios exteriores
+account G:ServiciosExteriores:620                                        ; type: X, ca-pa-7: y, ca-pa-a: y, desc: gastos en investigacion y desarrollo del ejercicio
+account G:ServiciosExteriores:621-ArrendamientosYCanones                 ; type: X, ca-pa-7: y, ca-pa-a: y, desc: arrendamientos y canones
+account G:ServiciosExteriores:622-ReparacionesYConservacion              ; type: X, ca-pa-7: y, ca-pa-a: y, desc: reparaciones y conservacion
+account G:ServiciosExteriores:623-ServiciosProfesionalesIndependientes     ; type: X, ca-pa-7: y, ca-pa-a: y, desc: servicios de profesionales independientes
+account G:ServiciosExteriores:624-Transportes                            ; type: X, ca-pa-7: y, ca-pa-a: y, desc: transportes
+account G:ServiciosExteriores:625-PrimasSeguros                          ; type: X, ca-pa-7: y, ca-pa-a: y, desc: primas de seguros
+account G:ServiciosExteriores:626-ServiciosBancarios                     ; type: X, ca-pa-7: y, ca-pa-a: y, desc: servicios bancarios y similares
+account G:ServiciosExteriores:627-Publ                                   ; type: X, ca-pa-7: y, ca-pa-a: y, desc: publicidad, propaganda y relaciones publicas
+account G:ServiciosExteriores:628-Suministros                            ; type: X, ca-pa-7: y, ca-pa-a: y, desc: suministros
+account G:ServiciosExteriores:629-OtrosServicios                         ; type: X, ca-pa-7: y, ca-pa-a: y, desc: otros servicios
 account G:Tributos:63                                                    ; type: X, desc: tributos
 account G:Tributos:630-ImpuestoSobreBeneficios                           ; type: X, desc: impuesto sobre beneficios
 account G:Tributos:6300-ImpuestoCorriente                                ; type: X, desc: impuesto corriente
@@ -645,40 +645,40 @@ account G:Deterioro:6991                                                 ; type:
 account G:Deterioro:6992                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, otras partes vinculadas
 account G:Deterioro:6993                                                 ; type: X, desc: perdidas por deterioro de creditos a corto plazo, otras empresas
 account I                                                                ; type: R, desc: ventas e ingresos
-account I:Ventas:70                                                      ; type: R, desc: ventas de mercaderias, de produccion propia, de servicios, etc
-account I:Ventas:700-Mercaderias                                         ; type: R, desc: ventas de mercaderias
-account I:Ventas:701-ProductosTerminados                                 ; type: R, desc: ventas de productos terminados
-account I:Ventas:702-ProductosSemiterminados                             ; type: R, desc: ventas de productos semiterminados
-account I:Ventas:703-SubproductosYResiduos                               ; type: R, desc: ventas de subproductos y residuos
-account I:Ventas:704-EnvasesYEmbalajes                                   ; type: R, desc: ventas de envases y embalajes
-account I:Ventas:705-PrestacionesServicios                               ; type: R, desc: prestaciones de servicios
-account I:Ventas:706                                                     ; type: R, desc: descuentos sobre ventas por pronto pago
-account I:Ventas:7060                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de mercaderias
-account I:Ventas:7061                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de productos terminados
-account I:Ventas:7062                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de productos semiterminados
-account I:Ventas:7063                                                    ; type: R, desc: descuentos sobre ventas por pronto pago de subproductos y residuos
-account I:Ventas:708                                                     ; type: R, desc: devoluciones de ventas y operaciones similares
-account I:Ventas:7080-DevolucionesVentasMercaderias                      ; type: R, desc: devoluciones de ventas de mercaderias
-account I:Ventas:7081                                                    ; type: R, desc: devoluciones de ventas de productos terminados
-account I:Ventas:7082                                                    ; type: R, desc: devoluciones de ventas de productos semiterminados
-account I:Ventas:7083                                                    ; type: R, desc: devoluciones de ventas de subproductos y residuos
-account I:Ventas:7084                                                    ; type: R, desc: devoluciones de ventas de envases y embalajes
-account I:Ventas:709-RappelsSobreVentas                                  ; type: R, desc: <<rappels>> sobre ventas
-account I:Ventas:7090-RappelsSobreVentasMercaderias                      ; type: R, desc: <<rappels>> sobre ventas de mercaderias
-account I:Ventas:7091                                                    ; type: R, desc: <<rappels>> sobre ventas de productos terminados
-account I:Ventas:7092                                                    ; type: R, desc: <<rappels>> sobre ventas de productos semiterminados
-account I:Ventas:7093                                                    ; type: R, desc: <<rappels>> sobre ventas de subproductos y residuos
-account I:Ventas:7094                                                    ; type: R, desc: <<rappels>> sobre ventas de envases y embalajes
-account I:VariacionExistencias:71                                        ; type: R, desc: variacion de existencias
-account I:VariacionExistencias:710                                       ; type: R, desc: variacion de existencias de productos en curso
-account I:VariacionExistencias:711                                       ; type: R, desc: variacion de existencias de productos semiterminados
-account I:VariacionExistencias:712                                       ; type: R, desc: variacion de existencias de productos terminados
-account I:VariacionExistencias:713                                       ; type: R, desc: variacion de existencias de subproductos, residuos y materiales recuperados
-account I:TrabajosRealizadosParaLaEmpresa:73                             ; type: R, desc: trabajos realizados para la empresa
-account I:TrabajosRealizadosParaLaEmpresa:730                            ; type: R, desc: trabajos realizados para el inmovilizado intangible
-account I:TrabajosRealizadosParaLaEmpresa:731                            ; type: R, desc: trabajos realizados para el inmovilizado material
-account I:TrabajosRealizadosParaLaEmpresa:732-TrabajosRealizadosEnInversionesInmob     ; type: R, desc: trabajos realizados en inversiones inmobiliarias
-account I:TrabajosRealizadosParaLaEmpresa:733                            ; type: R, desc: trabajos realizados para el inmovilizado material en curso
+account I:Ventas:70                                                      ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de mercaderias, de produccion propia, de servicios, etc
+account I:Ventas:700-Mercaderias                                         ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de mercaderias
+account I:Ventas:701-ProductosTerminados                                 ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de productos terminados
+account I:Ventas:702-ProductosSemiterminados                             ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de productos semiterminados
+account I:Ventas:703-SubproductosYResiduos                               ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de subproductos y residuos
+account I:Ventas:704-EnvasesYEmbalajes                                   ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: ventas de envases y embalajes
+account I:Ventas:705-PrestacionesServicios                               ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: prestaciones de servicios
+account I:Ventas:706                                                     ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: descuentos sobre ventas por pronto pago
+account I:Ventas:7060                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: descuentos sobre ventas por pronto pago de mercaderias
+account I:Ventas:7061                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: descuentos sobre ventas por pronto pago de productos terminados
+account I:Ventas:7062                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: descuentos sobre ventas por pronto pago de productos semiterminados
+account I:Ventas:7063                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: descuentos sobre ventas por pronto pago de subproductos y residuos
+account I:Ventas:708                                                     ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas y operaciones similares
+account I:Ventas:7080-DevolucionesVentasMercaderias                      ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas de mercaderias
+account I:Ventas:7081                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas de productos terminados
+account I:Ventas:7082                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas de productos semiterminados
+account I:Ventas:7083                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas de subproductos y residuos
+account I:Ventas:7084                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: devoluciones de ventas de envases y embalajes
+account I:Ventas:709-RappelsSobreVentas                                  ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas
+account I:Ventas:7090-RappelsSobreVentasMercaderias                      ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas de mercaderias
+account I:Ventas:7091                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas de productos terminados
+account I:Ventas:7092                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas de productos semiterminados
+account I:Ventas:7093                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas de subproductos y residuos
+account I:Ventas:7094                                                    ; type: R, ca-pa-1: y, ca-pa-a: y, INCN: y, desc: <<rappels>> sobre ventas de envases y embalajes
+account I:VariacionExistencias:71                                        ; type: R, ca-pa-2: y, ca-pa-a: y, desc: variacion de existencias
+account I:VariacionExistencias:710                                       ; type: R, ca-pa-2: y, ca-pa-a: y, desc: variacion de existencias de productos en curso
+account I:VariacionExistencias:711                                       ; type: R, ca-pa-2: y, ca-pa-a: y, desc: variacion de existencias de productos semiterminados
+account I:VariacionExistencias:712                                       ; type: R, ca-pa-2: y, ca-pa-a: y, desc: variacion de existencias de productos terminados
+account I:VariacionExistencias:713                                       ; type: R, ca-pa-2: y, ca-pa-a: y, desc: variacion de existencias de subproductos, residuos y materiales recuperados
+account I:TrabajosRealizadosParaLaEmpresa:73                             ; type: R, ca-pa-3: y, ca-pa-a: y, desc: trabajos realizados para la empresa
+account I:TrabajosRealizadosParaLaEmpresa:730                            ; type: R, ca-pa-3: y, ca-pa-a: y, desc: trabajos realizados para el inmovilizado intangible
+account I:TrabajosRealizadosParaLaEmpresa:731                            ; type: R, ca-pa-3: y, ca-pa-a: y, desc: trabajos realizados para el inmovilizado material
+account I:TrabajosRealizadosParaLaEmpresa:732-TrabajosRealizadosEnInversionesInmob     ; type: R, ca-pa-3: y, ca-pa-a: y, desc: trabajos realizados en inversiones inmobiliarias
+account I:TrabajosRealizadosParaLaEmpresa:733                            ; type: R, ca-pa-3: y, ca-pa-a: y, desc: trabajos realizados para el inmovilizado material en curso
 account I:Subvenciones:74                                                ; type: R, desc: subvenciones, donaciones y legados
 account I:Subvenciones:740                                               ; type: R, desc: subvenciones, donaciones y legados a la explotacion
 account I:Subvenciones:746                                               ; type: R, desc: subvenciones, donaciones y legados de capital transferidos al resultado del ejercicio

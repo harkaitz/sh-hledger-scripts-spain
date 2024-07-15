@@ -23,7 +23,6 @@
 . hledger-ca-itr
 . hledger-ca-ba
 . hledger-ca-pg
-. hledger-ca-mem
 hledger_ca() {
     local cmd="$1"
     shift
@@ -35,7 +34,7 @@ hledger_ca() {
         bal)    hledger_ca_ba "$@"            ;;
         cpg)    hledger_ca_pg "$@"            ;;
         dm)     echo "NO existe ninguna partida de naturaleza medioambiental." ;;
-        mem)    hledger_ca_mem "$@"           ;;
+        mem)    hledger-ca-mem "$@"           ;;
         ma)     echo "Normalmente vacio."     ;;
         ip)     echo "Usar sistema de firma." ;;
         *)      echo >&2 "error: Invalid argument: ${cmd}"; return 1;;

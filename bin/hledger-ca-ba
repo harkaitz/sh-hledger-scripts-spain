@@ -9,88 +9,87 @@
 . hledger-get
 hledger_ca_ba() {
     cat <<-EOF
-	                                                             _____
-	____________________________________________________________| BA1 |____________
+	[BA1]
+	                                                                         $(hledger_get t2)
+	A) ACTIVO NO CORRIENTE ................................................: $(hledger_get l2 A:NoCorriente)
+	                                                                         $(hledger_get t2)
+	  I   - Inmovilizado intangible .......................................: $(hledger_get l2 A:NoCorriente:InmIntang:)
+	  II  - Inmovilizado material .........................................: $(hledger_get l2 A:NoCorriente:InmMaterial:)
+	  III - Invers. inmobiliarias .........................................: $(hledger_get l2 A:NoCorriente:InversionesInmob:)
+	  IV  - Invers. en empresas del grupo y asociadas a largo plazo .......: $(hledger_get l2 A:NoCorriente:InversLargoPartesVinc:)
+	  V   - Invers. financieras a largo plazo .............................: $(hledger_get l2 A:NoCorriente:InversLargoPlazo:)
+	  VI  - Activos por impuesto diferido .................................: $(hledger_get l2 A:NoCorriente:AdminPubl:474-ActivosImpuestoDiferido)
+	  VII - Deudores comerciales no corrientes ............................: $(hledger_get l2 A:NoCorriente:DeudoresVarios:)
+	                                                                         $(hledger_get t2)
+	B) ACTIVO CORRIENTE ...................................................: $(hledger_get l2 A:Corriente)
+	                                                                         $(hledger_get t2)
+	  I   - Activos no corrientes mantenidos para la venta ................: $(hledger_get n2)
+	  II  - Existencias ...................................................: $(hledger_get n2)
+	  III - Deudores comerciales y otras cuentas a cobrar .................: $(hledger_get n2)
+	   1  - Clientes por ventas y prestaciones de servicios ...............: $(hledger_get n2)
+	    a - Clientes por ventas y prestaciones de servicios a largo plazo .: $(hledger_get n2)
+	    b - Clientes por ventas y prestaciones de servicios a corto plazo .: $(hledger_get n2)
+	   2  - Accionistas (socios) por desembolsos exigidos .................: $(hledger_get n2)
+	   3  - Otros deudores ................................................: $(hledger_get n2)
+	  IV  - Inversiones en empresas del grupo y asociadas a corto plazo ...: $(hledger_get n2)
+	  V   - Inversiones financieras a corto ...............................: $(hledger_get n2)
+	  VI  - Periodificaciones a corto .....................................: $(hledger_get n2)
+	  VII - Efectivo y otros activos liquidos equivalentes ................: $(hledger_get l2 A:Corriente:Tesoreria)
+	                                                                         $(hledger_get t2)
+	TOTAL ACTIVO (A + B)...................................................: $(hledger_get l2 A:NoCorriente A:Corriente)
 	
-	A) ACTIVO NO CORRIENTE ................................................: $(hledger_get A:NoCorriente)
+	[BA2.1]
+	                                                                         $(hledger_get t2)
+	A) PATRIMONIO NETO ....................................................: $(hledger_get r2 PN:)
+	  A-1) Fondos propios .................................................: $(hledger_get r2 PN:Capital:)
+	    I    - Capital ....................................................: $(hledger_get r2 PN:Capital:)
+	    I.1    - Capital escriturado ......................................: $(hledger_get r2 PN:Capital:100-Social)
+	    I.2    - (Capital no exigido) .....................................: $(hledger_get n2)
+	    II   - Prima de emisión ...........................................: $(hledger_get n2)
+	    III  - Reservas ...................................................: $(hledger_get n2)
+	    III.1  - Reserva de capitalización ................................: $(hledger_get n2)
+	    III.2  - Otras reservas ...........................................: $(hledger_get n2)
+	    IV   - (Acciones y participaciones en patrimonio propias) .........: $(hledger_get n2)
+	    V    - Resultados de ejercicios anteriores ........................: $(hledger_get n2)
+	    VI   - Otras aportaciones de socios ...............................: $(hledger_get n2)
+	    VII  - Resultados del ejercicio ...................................: $(hledger_get r2 G: I:)
+	    VIII - (Dividendo a cuenta) .......................................: $(hledger_get n2)
+	    IX.  - Otros instrumentos de patrimonio neto ......................: $(hledger_get n2)
+	  A-2) Ajustes por cambios de valor ...................................: $(hledger_get n2)
+	  A-3) Subvenciones, donaciones y legados recibidos ...................: $(hledger_get n2)
+	                                                                         $(hledger_get t2)
+	B) PASIVO NO CORRIENTE ................................................: $(hledger_get n2)
+	  I    - Provisiones a largo plazo ....................................: $(hledger_get n2)
+	  II   - Deudas a largo plazo .........................................: $(hledger_get n2)
+	  II.1   - Deudas con entidades de crédito ............................: $(hledger_get n2)
+	  II.2   - Acreedores por arrendamiento financiero ....................: $(hledger_get n2)
+	  II.3   - Otras deudas a largo plazo .................................: $(hledger_get n2)
+	  III  - Deudas con empresas del grupo y asociadas a largo plazo ......: $(hledger_get n2)
+	  IV   - Pasivos por impuesto diferido ................................: $(hledger_get n2)
+	  V    - Periodificaciones a largo plazo ..............................: $(hledger_get n2)
+	  VI   - Acreedores comerciales no corrientes .........................: $(hledger_get n2)
+	  VII  - Deuda con caracteristicas especiales a largo plazo ...........: $(hledger_get n2)
 	
-	  I   - Inmovilizado intangible .......................................: $(hledger_get A:NoCorriente:InmIntang:)
-	  II  - Inmovilizado material .........................................: $(hledger_get A:NoCorriente:InmMaterial:)
-	  III - Invers. inmobiliarias .........................................: $(hledger_get A:NoCorriente:InversionesInmob:)
-	  IV  - Invers. en empresas del grupo y asociadas a largo plazo .......: $(hledger_get A:NoCorriente:InversLargoPartesVinc:)
-	  V   - Invers. financieras a largo plazo .............................: $(hledger_get A:NoCorriente:InversLargoPlazo:)
-	  VI  - Activos por impuesto diferido .................................: $(hledger_get A:NoCorriente:AdminPubl:474-ActivosImpuestoDiferido)
-	  VII - Deudores comerciales no corrientes ............................: $(hledger_get A:NoCorriente:DeudoresVarios:)
+	[BA2.2]
 	
-	B) ACTIVO CORRIENTE ...................................................: $(hledger_get A:Corriente)
+	C) PASIVO CORRIENTE                                                      $(hledger_get t2)
+	  I      - Pasivos vinc. con activos no corr. mantenidos para venta ...: $(hledger_get n2)
+	  II     - Provisiones a corto plazo ..................................: $(hledger_get n2)
+	  III    - Deudas a corto plazo .......................................: $(hledger_get n2)
+	  III.1    - Deudas con entidades de crédito ..........................: $(hledger_get n2)
+	  III.2    - Acreedores por arrendamiento financiero ..................: $(hledger_get n2)
+	  III.3    - Otras deudas a corto plazo ...............................: $(hledger_get n2)
+	  IV     - Deudas con empresas del grupo y asociadas a corto plazo ....: $(hledger_get n2)
+	  V      - Acreedores comerciales y otras cuentas a pagar .............: $(hledger_get n2)
+	  V.1      - Proveedores ..............................................: $(hledger_get n2)
+	  V.1.a      - Proveedores a largo plazo ..............................: $(hledger_get n2)
+	  V.1.b      - Proveedores a corto plazo ..............................: $(hledger_get n2)
+	  V.2      - Otros acreedores .........................................: $(hledger_get n2)
+	  VI     - Periodificaciones a corto plazo ............................: $(hledger_get n2)
+	  VII    - Deuda con caracteristicas especiales a corto plazo .........: $(hledger_get n2)
+	                                                                         $(hledger_get t2)
+	TOTAL PATRIMONIO NETO Y PASIVO (A + B + C) ............................: $(hledger_get r2 PN: P: G: I:)
 	
-	  I   - Activos no corrientes mantenidos para la venta ................: n
-	  II  - Existencias ...................................................: n
-	  III - Deudores comerciales y otras cuentas a cobrar .................: n
-	   1  - Clientes por ventas y prestaciones de servicios ...............: n
-	    a - Clientes por ventas y prestaciones de servicios a largo plazo .: n
-	    b - Clientes por ventas y prestaciones de servicios a corto plazo .: n
-	   2  - Accionistas (socios) por desembolsos exigidos .................: n
-	   3  - Otros deudores ................................................: n
-	  IV  - Inversiones en empresas del grupo y asociadas a corto plazo ...: n
-	  V   - Inversiones financieras a corto ...............................: n
-	  VI  - Periodificaciones a corto .....................................: n
-	  VII - Efectivo y otros activos liquidos equivalentes ................: $(hledger_get A:Corriente:Tesoreria)
-	
-	TOTAL ACTIVO (A + B): $(hledger_get A:NoCorriente A:Corriente)
-	                                                             _______
-	____________________________________________________________| BA2.1 |__________
-	
-	A) PATRIMONIO NETO .................................................... : $(hledger_get r PN:)
-	  A-1) Fondos propios ................................................. : $(hledger_get r PN:Capital:)
-	    I    - Capital .................................................... : $(hledger_get r PN:Capital:)
-	    I.1    - Capital escriturado ...................................... : $(hledger_get r PN:Capital:100-Social)
-	    I.2    - (Capital no exigido) ..................................... : n
-	    II   - Prima de emisión ........................................... : n
-	    III  - Reservas ................................................... : n
-	    III.1  - Reserva de capitalización ................................ : n
-	    III.2  - Otras reservas ........................................... : n
-	    IV   - (Acciones y participaciones en patrimonio propias) ......... : n
-	    V    - Resultados de ejercicios anteriores ........................ : n
-	    VI   - Otras aportaciones de socios ............................... : n
-	    VII  - Resultados del ejercicio ................................... : $(hledger_get r G: I:)
-	    VIII - (Dividendo a cuenta) ....................................... : n
-	    IX.  - Otros instrumentos de patrimonio neto ...................... : n
-	  A-2) Ajustes por cambios de valor ................................... : n
-	  A-3) Subvenciones, donaciones y legados recibidos ................... : n
-	
-	B) PASIVO NO CORRIENTE ................................................ : n
-	  I    - Provisiones a largo plazo .................................... : n
-	  II   - Deudas a largo plazo ......................................... : n
-	  II.1   - Deudas con entidades de crédito ............................ : n
-	  II.2   - Acreedores por arrendamiento financiero .................... : n
-	  II.3   - Otras deudas a largo plazo ................................. : n
-	  III  - Deudas con empresas del grupo y asociadas a largo plazo ...... : n
-	  IV   - Pasivos por impuesto diferido ................................ : n
-	  V    - Periodificaciones a largo plazo .............................. : n
-	  VI   - Acreedores comerciales no corrientes ......................... : n
-	  VII  - Deuda con caracteristicas especiales a largo plazo ........... : n
-	                                                             _______
-	____________________________________________________________| BA2.2 |_________
-	
-	C) PASIVO CORRIENTE
-	  I      - Pasivos vinc. con activos no corr. mantenidos para venta ... : n
-	  II     - Provisiones a corto plazo .................................. : n
-	  III    - Deudas a corto plazo ....................................... : n
-	  III.1    - Deudas con entidades de crédito .......................... : n
-	  III.2    - Acreedores por arrendamiento financiero .................. : n
-	  III.3    - Otras deudas a corto plazo ............................... : n
-	  IV     - Deudas con empresas del grupo y asociadas a corto plazo .... : n
-	  V      - Acreedores comerciales y otras cuentas a pagar ............. : n
-	  V.1      - Proveedores .............................................. : n
-	  V.1.a      - Proveedores a largo plazo .............................. : n
-	  V.1.b      - Proveedores a corto plazo .............................. : n
-	  V.2      - Otros acreedores ......................................... : n
-	  VI     - Periodificaciones a corto plazo ............................ : n
-	  VII    - Deuda con caracteristicas especiales a corto plazo ......... : n
-	
-	TOTAL PATRIMONIO NETO Y PASIVO (A + B + C) : $(hledger_get r PN: P: G: I:)
-	________________________________________________________________________________
 	EOF
 }
 if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca-ba"; then

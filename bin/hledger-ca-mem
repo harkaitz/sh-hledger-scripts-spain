@@ -26,7 +26,7 @@ hledger_ca_mem() {
 }
 ## -------------------------------------------------------------------
 hledger_ca_mem_1() {
-    less <<-EOF
+    cat <<-EOF
 	$(getinfo -g COMPANY_SOCIAL_DENOMINATION=s) (en adelante, la Sociedad) se constituyó el $(getinfo -g COMPANY_FORMATION_DATE_ES=s). Es una
 	sociedad constituida en $(getinfo -g COMPANY_FORMATION_STATE_ES=s) de conformidad con la Ley de Sociedades de Capital. El objeto de la
 	empresa, de acuerdo con sus estatutos es el siguiente:
@@ -39,7 +39,7 @@ hledger_ca_mem_1() {
 }
 ## -------------------------------------------------------------------
 hledger_ca_mem_2() {
-    less <<-EOF
+    cat <<-EOF
 	# Bases de presentación de las Cuentas Anuales
 	
 	## Marco normativo de información financiera aplicable a la Sociedad
@@ -104,7 +104,7 @@ hledger_ca_mem_2_comparacion() {
 }
 ## -------------------------------------------------------------------
 hledger_ca_mem_3() {
-    less <<-EOF
+    cat <<-EOF
 	# Normas de registro y valoración
 	
 	Las principales normas de registro y valoración utilizadas por la Sociedad en la elaboración de sus Cuentas
@@ -264,12 +264,14 @@ hledger_ca_mem_5() { # Activos financieros
 	del ejercicio $(hledger_get year1) (en euros):
 	EOF
     hledger_es \
+        --pretty \
         --begin="$(hledger_get year2)-01-01" \
         --end="$(hledger_get year1)-12-31"   \
         --yearly \
         balance \
         -H \
-        'A:Corriente:Tesoreria:'
+        'A:Corriente:Tesoreria:' \
+        | nflip -e
     return 0
 }
 hledger_ca_mem_6() { # Pasivos financieros
@@ -282,12 +284,14 @@ hledger_ca_mem_6() { # Pasivos financieros
 	del ejercicio $(hledger_get year1) (en euros):
 	EOF
     hledger_es \
+        --pretty \
         --begin="$(hledger_get year2)-01-01" \
         --end="$(hledger_get year1)-12-31"   \
         --yearly \
         balance \
         -H \
-        'P:Corriente:'
+        'P:Corriente:' \
+        | nflip -e
     return 0
 }
 ## -------------------------------------------------------------------

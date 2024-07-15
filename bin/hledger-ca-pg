@@ -8,49 +8,45 @@
 ##:
 . hledger-get
 hledger_ca_pg() {
-    V07="$(hledger_get G:ServiciosExteriores)"
-    V_A="$(hledger_get G:ServiciosExteriores)"
-    V_C="$(hledger_get r G: I:)"
-    V_D="$(hledger_get r G: I:)"
     cat <<-EOF
-	______________________________________________________________________________________
-	
-	1.  - Importe neto de la cifra de negocios .....................................: n
-	2.  - Variación existencias de productos terminados y en curso de fabricación ..: n
-	3.  - Trabajos realizados para su activo .......................................: n
-	4.  - Aprovisionamientos .......................................................: n
-	5.  - Otros ingresos de explotación ............................................: n
-	6.  - Gastos de personal .......................................................: n
-	7.  - Otros gastos de explotación ..............................................: ${V07}
-	8.  - Amortización del inmovilizado ............................................: n
-	9.  - Imputación de subvenciones de inmovilizado no financiero y otras .........: n
-	10. - Excesos de provisiones ...................................................: n
-	11. - Deterioro y resultado por enajenaciones del inmovilizado .................: n
-	12. - Diferencia negativa de combinaciones de negocio ..........................: n
-	13. - Otros resultados .........................................................: n
-	
-	A) RESULTADO DE EXPLOTACIÓN (1+2+3+4+5+6+7+8+9+10+11+12+13) ....................: ${V_A}
-	______________________________________________________________________________________
-	
-	14. - Ingresos financieros .....................................................: n
-	 a) - Imputación de subvenciones, donaciones y legados de carácter financiero ..: n
-	 b) - Otros ingresos financieros ...............................................: n
-	15. - Gastos financieros .......................................................: n
-	16. - Variación de valor razonable en instrumentos financieros .................: n
-	17. - Diferencias de cambio ....................................................: n
-	18. - Deterioro y resultado por enajenaciones de instrumentos financieros ......: n
-	19. - Otros ingresos y gastos de carácter financiero ...........................: n
-	 a) - Incorporación al activo de gastos financieros ............................: n
-	 b) - Ingresos financieros derivados de convenios de acreedores ................: n
-	 c) - Resto de ingresos y gastos ...............................................: n
-	
-	B) RESULTADO FINANCIERO (14+15+16+17+18+19) ....................................: n
-	C) RESULTADO ANTES DE IMPUESTOS (A+B) ..........................................: ${V_C}
-	
-	20. - Impuestos sobre beneficios ...............................................: n
-	
-	D) RESULTADOS DEL EJERCICIO (C + 20) ...........................................: ${V_D}
-	______________________________________________________________________________________
+	_____________________________________________________________________________________________________________
+	                                                                                  $(hledger_get t2)
+	1.  - Importe neto de la cifra de negocios .....................................: $(hledger_get p2 tag:ca-pa-1)
+	2.  - Variación existencias de productos terminados y en curso de fabricación ..: $(hledger_get p2 tag:ca-pa-2)
+	3.  - Trabajos realizados para su activo .......................................: $(hledger_get p2 tag:ca-pa-3)
+	4.  - Aprovisionamientos .......................................................: $(hledger_get n2)
+	5.  - Otros ingresos de explotación ............................................: $(hledger_get n2)
+	6.  - Gastos de personal .......................................................: $(hledger_get n2)
+	7.  - Otros gastos de explotación ..............................................: $(hledger_get p2 tag:ca-pa-7)
+	8.  - Amortización del inmovilizado ............................................: $(hledger_get n2)
+	9.  - Imputación de subvenciones de inmovilizado no financiero y otras .........: $(hledger_get n2)
+	10. - Excesos de provisiones ...................................................: $(hledger_get n2)
+	11. - Deterioro y resultado por enajenaciones del inmovilizado .................: $(hledger_get n2)
+	12. - Diferencia negativa de combinaciones de negocio ..........................: $(hledger_get n2)
+	13. - Otros resultados .........................................................: $(hledger_get n2)
+	                                                                                  $(hledger_get t2)
+	A) RESULTADO DE EXPLOTACIÓN (1+2+3+4+5+6+7+8+9+10+11+12+13) ....................: $(hledger_get p2 tag:ca-pa-a | nflip -fe)
+	_____________________________________________________________________________________________________________
+	                                                                                  $(hledger_get t2)
+	14. - Ingresos financieros .....................................................: $(hledger_get n2)
+	 a) - Imputación de subvenciones, donaciones y legados de carácter financiero ..: $(hledger_get n2)
+	 b) - Otros ingresos financieros ...............................................: $(hledger_get n2)
+	15. - Gastos financieros .......................................................: $(hledger_get n2)
+	16. - Variación de valor razonable en instrumentos financieros .................: $(hledger_get n2)
+	17. - Diferencias de cambio ....................................................: $(hledger_get n2)
+	18. - Deterioro y resultado por enajenaciones de instrumentos financieros ......: $(hledger_get n2)
+	19. - Otros ingresos y gastos de carácter financiero ...........................: $(hledger_get n2)
+	 a) - Incorporación al activo de gastos financieros ............................: $(hledger_get n2)
+	 b) - Ingresos financieros derivados de convenios de acreedores ................: $(hledger_get n2)
+	 c) - Resto de ingresos y gastos ...............................................: $(hledger_get n2)
+	                                                                                  $(hledger_get t2)
+	B) RESULTADO FINANCIERO (14+15+16+17+18+19) ....................................: $(hledger_get n2)
+	C) RESULTADO ANTES DE IMPUESTOS (A+B) ..........................................: $(hledger_get r2 G: I:)
+	                                                                                  $(hledger_get t2)
+	20. - Impuestos sobre beneficios ...............................................: $(hledger_get n2)
+	                                                                                  $(hledger_get t2)
+	D) RESULTADOS DEL EJERCICIO (C + 20) ...........................................: $(hledger_get r2 G: I:)
+	_____________________________________________________________________________________________________________
 	
 	EOF
     return 0
