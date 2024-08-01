@@ -12,7 +12,7 @@
 #h: ... mem ... : Memoria.
 #h: ... ma      : Modelo de Autocartera.
 #h: ... ip      : Instancia de presentación (ayuda).
-#h: ... chd     : Certificado huella digital (ayuda).
+#h: ... cac ... : Abrir nuevo "Certificación de Aprobación de Cuentas"
 #h:
 #h: Este programa ayuda en la confección de las cuentas anuales abreviadas
 #h: de una S.L. cuando se ha utilizado hledger(1) para la confección de las
@@ -34,12 +34,123 @@ hledger_ca() {
         bal)    hledger_ca_ba "$@"            ;;
         cpg)    hledger_ca_pg "$@"            ;;
         dm)     echo "NO existe ninguna partida de naturaleza medioambiental." ;;
-        mem)    hledger-ca-mem "$@"           ;;
+        mem)    hledger_ca_mem "$@"           ;;
         ma)     echo "Normalmente vacio."     ;;
         ip)     echo "Usar sistema de firma." ;;
+        cac)    hledger_ca_cac "$@"           ;;
         *)      echo >&2 "error: Invalid argument: ${cmd}"; return 1;;
     esac
 }
+## -------------------------------------------------------------------
+hledger_ca_mem() {
+    if test ! -n "$1"; then
+        cat <<-EOF
+	af  : Activos financieros.
+	pf  : Pasivos financieros.
+	fp  : Fondos propios.
+	sf  : Situación fiscal (no implementado).
+	EOF
+        return 0
+    else
+        hledger_ca_mem_"$1"
+    fi
+}
+hledger_ca_mem_af() {
+    cat <<-EOF
+	# Activos Financieros
+	
+	En función de la clasificación establecida por el PGC en sus
+	normas de registro y valoración para los activos financieros, la
+	Sociedad mantiene los siguientes saldos a corto plazo al cierre
+	del ejercicio $(hledger_get year1) (en euros):
+	EOF
+    hledger_es \
+        --pretty \
+        --begin="$(hledger_get year2)-01-01" \
+        --end="$(hledger_get year1)-12-31"   \
+        --yearly \
+        balance \
+        -H \
+        'A:Corriente:Tesoreria:' \
+        | nflip -e
+    return 0
+}
+hledger_ca_mem_pf() {
+    cat <<-EOF
+	# Pasivos Financieros
+	
+	En función de la clasificación establecida por el PGC en sus
+	normas de registro y valoración para los pasivos financieros, la
+	Sociedad mantiene los siguientes saldos a corto plazo al cierre
+	del ejercicio $(hledger_get year1) (en euros):
+	EOF
+    hledger_es \
+        --pretty \
+        --begin="$(hledger_get year2)-01-01" \
+        --end="$(hledger_get year1)-12-31"   \
+        --yearly \
+        balance \
+        -H \
+        'P:Corriente:' \
+        | nflip -e
+    return 0
+}
+hledger_ca_mem_fp() {
+    cat <<-EOF
+	# Fondos propios
+	
+	Al cierre del ejercicio $(hledger_get year1), el capital social de la Sociedad asciende a $(getinfo -g COMPANY_SOCIAL_CAPITAL_EUROS=s) euros, representado por $(getinfo -g COMPANY_NUMBER_OF_SHARES=s)
+	participaciones de un euro de valor nominal cada una, todas ellas de la misma clase, totalmente suscritas y
+	desembolsadas.
+	
+	$(getinfo -G COMPANY_OWNERS=s)
+	EOF
+}
+hledger_ca_mem_sf() {
+    cat <<-EOF
+	# Situación Fiscal
+	
+	En el ejercicio $(hledger_get year1) no ha habido actividad fiscal alguna.
+	EOF
+}
+## -------------------------------------------------------------------
+hledger_ca_cac() {
+    if test ! -n "$1"; then
+        cat <<-EOF
+	Antes de empezar crea un nuevo tramite:
+	
+	  $ paperwork -n EMPRESA-ca
+	
+	Para crear el CAC genera la huella digital de las cuentas anuales
+	en D2 y guardalo en "HUELLA.txt" para posterior acceso.
+	
+	  $ echo "CODIGO" > ~/PAPERWORK/HUELLA.txt
+	
+	Abre un nuevo formulario de CAC y guardalo en ~/PAPERWORK.
+	
+	  $ hledger-ca cac nuevo
+	
+	Rellenalo metiendo la huella como texto, y guardalo para la
+	presentación. Puedes acceder a la ayuda de campos con:
+	
+	  $ hledger-ca cac ayuda
+	
+	Una vez cumplimentado:
+	
+	  $ qpdf --decrypt ~/PAPERWORK/certificacion1-es.pdf ~/PAPERWORK/certificacion1-es-un.pdf
+	  $ pdfunite ~/PAPERWORK/certificacion1-es-un.pdf ~/PAPERWORK/44009B7255445420230.Huella.pdf ~/PAPERWORK/cac.pdf
+	EOF
+        # https://stackoverflow.com/questions/62795612/poppler-pdfunite-cannot-merge-encrypted-pdf-files-how-to-remove-encryption-no
+        # Maybe gs can du the trick better.
+        return 0
+    fi
+    case "$1" in
+        nuevo) xdg-open "http://rmvalencia.com/fileadmin/Formularios/Espa%C3%B1ol/Cuentas%20Anuales/certificacion1-es.pdf" ;;
+        ayuda) xdg-open "https://rmvalencia.com/fileadmin/Formularios/Espa%C3%B1ol/Cuentas%20Anuales/INSTRUCCIONES_PARA_LA_CORRECTA_CUMPLIMENTACION_DE_LAS_CUENTAS.pdf";;
+        *)     echo >&2 "error: Argumento invalido: $1"; return 1;;
+    esac
+}
+
 ## -------------------------------------------------------------------
 if test @"${SCRNAME:-$(basename "$0")}" = @"hledger-ca"; then
     case "${1}" in

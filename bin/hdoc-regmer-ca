@@ -1,0 +1,46 @@
+#!/bin/sh -e
+##:
+#h: Usage: hdoc-regmer-ca ...
+#h:
+#h: ... show : Show variables.
+#h: ... ej1  : Ejemplo de memoria - Sorlinda Investments, S.L.U. (2018)
+#h: ... ej2  : Ejemplo de memoria - Efferox, S.L. (2023)
+#h: ... ln1  : En qué consiste la Memoria de las Cuentas Anuales.
+#h: ... ln2  : Avisos del Registro Mercantil.
+#h: ... ln3  : Normas para los nombres de los ficheos.
+##:
+hdoc_regmer_ca() {
+    local cmd="$1"
+    shift
+    case "${cmd}" in
+        show) hdoc_regmer_ca_show_variables;;
+        ej1)  echo "${REGMER_EJ1}"; xdg-open "${REGMER_EJ1}";;
+        ej2)  echo "${REGMER_EJ2}"; xdg-open "${REGMER_EJ2}";;
+        ln1)  xdg-open "https://acrkontablex.com/en-que-consiste-la-memoria-de-las-cuentas-anuales/";;
+        ln2)  xdg-open "https://modelosyherramientas.indicator.es/main/documents/53160/documents_detail/kt_53164_229131_229129/?cookieChecked=1&i=1";;
+        ln3)  xdg-open "https://www.boe.es/buscar/doc.php?id=BOE-A-2015-1481";;
+        *)    echo >&2 "error: Invalid argument: ${cmd}"; return 1;;
+    esac
+}
+hdoc_regmer_ca_show_variables() {
+    cat <<-EOF
+	REGMER_EXAMPLES : ${REGMER_EXAMPLES}
+	REGMER_EJ1      : ${REGMER_EJ1}
+	REGMER_EJ2      : ${REGMER_EJ2}
+	EOF
+}
+hdoc_regmer_ca_calc_variables() {
+    REGMER_EXAMPLES="${REGMER_EXAMPLES:-$(dirname "$0")/../share/pgc/examples}"
+    REGMER_EJ1="${REGMER_EJ1:-${REGMER_EXAMPLES}/cuentas_anuales/do-cuentas-anuales-abreviadas-de-sorlinda-investments-sl-unipersonal-ejercicio-2018.pdf}"
+    REGMER_EJ2="${REGMER_EJ2:-${REGMER_EXAMPLES}/cuentas_anuales/memoria-cuentas-anuales-efferox-sl-2023.pdf}"
+}
+## -------------------------------------------------------------------
+
+## -------------------------------------------------------------------
+hdoc_regmer_ca_calc_variables
+if test @"${SCRNAME:-$(basename "$0")}" = @"hdoc-regmer-ca"; then
+    case "${1}" in
+        ''|-h|--help) sed -n 's/^ *#h: \{0,1\}//p' "$0";;
+        *)            hdoc_regmer_ca "$@"; exit 0;;
+    esac
+fi
